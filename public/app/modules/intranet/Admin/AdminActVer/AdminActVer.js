@@ -20,6 +20,12 @@ function AdminActVer(ServiceUsuario, $location, ServiceHTTP, ServiceHelpers,$rou
     }
 
 
+    vm.estadoCarga = false;
+    vm.cargarArchivo = function(){
+      console.log("click");
+      vm.estadoCarga = true;
+    }
+
     vm.actividadGrabar = function(){
       ServiceHTTP.actividadGrabar('');
       console.log(vm.data.actividad);

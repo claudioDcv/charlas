@@ -30,70 +30,96 @@ display: none;
         </p>
         <p>
           Infórmese seleccionando la Dirección Regional correspondiente de su domicilio.
-          <a class="btn btn-primary" href="/#/public/charlas/buscar">Buscar Charla</a>
         </p>
 
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <p data-toggle="collapse" href="#collapse1" aria-expanded="false">
-                  DIRECCIONES REGIONALES METROPOLITANAS
-                  <i class="fa fa-chevron-down pull-right"></i>
-                  <i class="fa fa-chevron-up pull-right"></i>
-                </p>
-              </h4>
+
+        <div ng-if="!vm.listaDR" class="sistema-charlas-bloque bloque-gris bloque-spacer sistema-charlas-table-vertical">
+            <h3 class="bloque-title ng-binding"></h3>
+            <div class="row">
+              <div class="col-md-6" ng-click="vm.listaDR = true">
+                <div class="bloque-image">
+                  <i aria-hidden="true" class="fa fa-bolt fa-4x fa-azul img-bloque hidden-xs"></i>
+                  <h4>Inscribirme en una Actividad</h4>
+                  <br><br>
+                </div>
+              </div>
+              <a href="/#/public/charlas/buscar" class="col-md-6">
+                <div class="bloque-image">
+                  <i aria-hidden="true" class="fa fa-star  fa-4x fa-azul img-bloque hidden-xs"></i>
+                  <h4>Cancelar inscripción u Obtener Cerificado</h4>
+                </div>
+              </a>
             </div>
-            <div id="collapse1" class="panel-collapse collapse">
-              <ul class="list-group">
-                <li class="list-group-item"><a href="/#/public/charlas/listado/1">DR Metropolitana Norte</a></li>
-                <li class="list-group-item"><a href="/#/public/charlas/listado/2">DR Metropolitana Oriente</a></li>
-                <li class="list-group-item"><a href="dr_centro.htm">DR Metropolitana Centro</a></li>
-
-                <li class="list-group-item"><a href="dr_sur.htm">DR Metropolitana Sur</a></li>
-                <li class="list-group-item"><a href="dr_poniente.htm">DR Metropolitana Poniente</a></li>
+        </div>
 
 
+        <button  ng-if="vm.listaDR" ng-click="vm.listaDR = false" class="btn btn-primary" ng-click="vm.login('admin')"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+        <hr>
 
-              </ul>
-            </div>
-          </div><!--fin panel 1-->
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <p data-toggle="collapse" href="#collapse2" aria-expanded="false">
-                  DIRECCIONES REGIONALES
-                  <i class="fa fa-chevron-down pull-right"></i>
-                  <i class="fa fa-chevron-up pull-right"></i>
-                </p>
-              </h4>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse">
-              <ul class="list-group">
-                <li class="list-group-item">DR Arica</li>
-                <li class="list-group-item"><a href="concepcion.htm">DR Concepci&oacute;n</a></li>
-                <li class="list-group-item"><a href="iquique.htm">DR Iquique</a></li>
+                        <div class="panel-group" id="accordion" ng-if="vm.listaDR">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <p data-toggle="collapse" href="#collapse1" aria-expanded="false">
+                                  DIRECCIONES REGIONALES METROPOLITANAS
+                                  <i class="fa fa-chevron-down pull-right"></i>
+                                  <i class="fa fa-chevron-up pull-right"></i>
+                                </p>
+                              </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                              <ul class="list-group">
+                                <li class="list-group-item"><a href="/#/public/charlas/listado/1">DR Metropolitana Norte</a></li>
+                                <li class="list-group-item"><a href="/#/public/charlas/listado/2">DR Metropolitana Oriente</a></li>
+                                <li class="list-group-item"><a href="dr_centro.htm">DR Metropolitana Centro</a></li>
 
-                <li class="list-group-item"><a href="temuco.htm">DR Temuco</a></li>
-                <li class="list-group-item"><a href="antofagasta.htm">DR Antofagasta</a></li>
+                                <li class="list-group-item"><a href="dr_sur.htm">DR Metropolitana Sur</a></li>
+                                <li class="list-group-item"><a href="dr_poniente.htm">DR Metropolitana Poniente</a></li>
 
-                <li class="list-group-item"><a href="valdivia.htm">DR Valdivia</a></li>
 
-                <li class="list-group-item">DR Copiap&oacute;</li>
-                <li class="list-group-item"><a href="puerto_montt.htm">DR Puerto Montt</a></li>
-                <li class="list-group-item"><a href="la_serena.htm">DR La Serena</a></li>
-                <li class="list-group-item"><a href="valparaiso.htm">DR Valpara&iacute;so</a></li>
 
-                <li class="list-group-item"><a href="punta_arenas.htm">DR Punta Arenas</a></li>
-                <li class="list-group-item">DR Coyhaique</li>
+                              </ul>
+                            </div>
+                          </div><!--fin panel 1-->
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <p data-toggle="collapse" href="#collapse2" aria-expanded="false">
+                                  DIRECCIONES REGIONALES
+                                  <i class="fa fa-chevron-down pull-right"></i>
+                                  <i class="fa fa-chevron-up pull-right"></i>
+                                </p>
+                              </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                              <ul class="list-group">
+                                <li class="list-group-item">DR Arica</li>
+                                <li class="list-group-item"><a href="concepcion.htm">DR Concepci&oacute;n</a></li>
+                                <li class="list-group-item"><a href="iquique.htm">DR Iquique</a></li>
 
-                <li class="list-group-item"><a href="rancagua.htm">DR Rancagua</a></li>
-                <li class="list-group-item">DR Talca</li>
+                                <li class="list-group-item"><a href="temuco.htm">DR Temuco</a></li>
+                                <li class="list-group-item"><a href="antofagasta.htm">DR Antofagasta</a></li>
 
-              </ul>
-            </div>
-          </div><!-- fin panel 2-->
-        </div> <!-- div panel group -->
+                                <li class="list-group-item"><a href="valdivia.htm">DR Valdivia</a></li>
+
+                                <li class="list-group-item">DR Copiap&oacute;</li>
+                                <li class="list-group-item"><a href="puerto_montt.htm">DR Puerto Montt</a></li>
+                                <li class="list-group-item"><a href="la_serena.htm">DR La Serena</a></li>
+                                <li class="list-group-item"><a href="valparaiso.htm">DR Valpara&iacute;so</a></li>
+
+                                <li class="list-group-item"><a href="punta_arenas.htm">DR Punta Arenas</a></li>
+                                <li class="list-group-item">DR Coyhaique</li>
+
+                                <li class="list-group-item"><a href="rancagua.htm">DR Rancagua</a></li>
+                                <li class="list-group-item">DR Talca</li>
+
+                              </ul>
+                            </div>
+                          </div><!-- fin panel 2-->
+                        </div> <!-- div panel group -->
+
+
+
       </div>
     </div>
 </div>

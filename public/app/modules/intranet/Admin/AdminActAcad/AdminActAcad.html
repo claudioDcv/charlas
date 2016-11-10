@@ -25,22 +25,7 @@
                 required replace="[\d+]">
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">DESCRIPCIÓN quedan: {{255-vm.data.actividad.descripcion.length}}</label>
-            <div class="col-sm-10">
-              <textarea
-                name="name"
-                rows="2"
-                cols="40"
-                ng-maxlength="255"
-                maxlength="255"
-                class="form-control"
-                ng-model="vm.data.actividad.descripcion"
-                placeholder="Descripción"
-                required
-                ></textarea>
-            </div>
-          </div>
+
           <div class="form-group">
               <label class="col-sm-2 control-label">PROGRAMA</label>
               <div class="col-sm-10">
@@ -57,6 +42,7 @@
                     >
               </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">DESTINATARIO</label>
             <div class="col-sm-10">
@@ -73,15 +59,42 @@
                 >
             </div>
           </div>
+
           <div class="form-group">
-            <label class="col-sm-2 control-label">MODALIDAD</label>
+            <label class="col-sm-2 control-label">TIPO</label>
             <div class="col-sm-10">
-              <select class="form-control" name="" ng-model="vm.data.actividad.modalidad">
-                <option value="1">Presencial</option>
-                <option value="2">e-Learning</option>
+              <select class="form-control" name="" ng-model="vm.data.actividad.tipo">
+                <option value="1">Seminario</option>
+                <option value="2">Charla</option>
+                <option value="3">Curso</option>
               </select>
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="modalidad">MODALIDAD</label>
+            <div class="col-sm-10">
+              <select class="form-control" name="modalidad" ng-model="vm.data.actividad.modalidad">
+                <option value="1">Presencial</option>
+                <option value="2">e-Learning</option>
+                <option value="3">Tutorial</option>
+                <option value="4">Caso</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">DURACIÓN (horas)</label>
+            <div class="col-sm-10">
+              <input
+                type="number"
+                ng-model="vm.duracion"
+                class="form-control"
+                required
+                >
+            </div>
+          </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">OBJETIVO</label>
             <div class="col-sm-10">
@@ -94,48 +107,6 @@
               ng-model="vm.data.actividad.objetivo"
               class="form-control"
               placeholder="Objetivo"
-              required
-                >
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label">ESTADO</label>
-            <div class="col-sm-10">
-              <input type="checkbox" ng-model="vm.activa">
-              <label class="checkbox-inline">{{vm.activa?'Activa':'Inactiva'}}</label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label">METODOLOGÍA quedan: {{1000-vm.data.actividad.metodologia.length}}</label>
-            <div class="col-sm-10">
-              <textarea
-                name="name"
-                rows="8"
-                cols="40"
-                ng-maxlength="1000"
-                maxlength="1000"
-                class="form-control"
-                ng-model="vm.data.actividad.metodologia"
-                placeholder="Metodología"
-                required
-                ></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label">TIPO PROGRAMA</label>
-            <div class="col-sm-10">
-              <input
-              type="text"
-              ng-maxlength="100"
-              ng-minlength="0"
-              minlength="0"
-              maxlength="100"
-              ng-model="vm.data.actividad.tipo_programa"
-              class="form-control"
-              placeholder="Tipo de programa"
               required
                 >
             </div>
@@ -159,25 +130,37 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label">METODOLOGÍA quedan: {{1000-vm.data.actividad.metodologia.length}}</label>
+            <div class="col-sm-10">
+              <textarea
+                name="name"
+                rows="8"
+                cols="40"
+                ng-maxlength="1000"
+                maxlength="1000"
+                class="form-control"
+                ng-model="vm.data.actividad.metodologia"
+                placeholder="Metodología"
+                required
+                ></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">ESTADO</label>
+            <div class="col-sm-10">
+              <input type="checkbox" ng-init="vm.activa = true" ng-model="vm.activa">
+              <label class="checkbox-inline">{{vm.activa?'Activa':'Inactiva'}}</label>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-sm-2 control-label">DOCUMENTO</label>
             <div class="col-sm-10">
               <input
                 type="file"
                 class="btn btn-default"
                 required
-                >
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label">DURACIÓN (minutos) <br/> {{vm.duracionCalculada}}</label>
-            <div class="col-sm-10">
-              <input
-                type="number"
-                ng-model="vm.duracion"
-                class="form-control"
-                required
-                ng-change="vm.duracionCalcular()"
                 >
             </div>
           </div>

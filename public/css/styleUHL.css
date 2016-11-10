@@ -285,3 +285,7 @@ p.sistema-charlas-tab-header-btn,
 }
 
 .sistema-charlas-tab-header + .table-responsive {margin-top: 0;}
+
+.formBusqueda input.custom-input{
+  margin-bottom: 10px!important;
+}

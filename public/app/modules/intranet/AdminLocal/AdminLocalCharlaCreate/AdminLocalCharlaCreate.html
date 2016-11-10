@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
             <li><a href="/#/">Home</a></li>
             <li><a href="/#/admin-local">Portal</a></li>
-            <li class="active">Nueva charla</li>
+            <li class="active">Programar Actividad</li>
         </ol>
         <!-- CUERPO -->
                 <div>
@@ -58,12 +58,7 @@
                                     <label class="radio-inline">
                                         <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="1">activo
                                     </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="2">suspendido
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="3">cancelado
-                                    </label>
+
                                 </div>
                             </div>
                             <div class="form-group">
@@ -104,10 +99,13 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-default" ng-click="vm.gotoCrear()" ng-disabled="FormNuevaCharla.$invalid">Guardar
+                                    <button class="btn btn-default" ng-click="vm.gotoCrear()" ng-disabled="FormNuevaCharla.$invalid">Programar
+                                    </button>
+                                    <button class="btn btn-default" ng-click="vm.gotoCrear()" >Suspender
                                     </button>
                                 </div>
                             </div>
+
                         </form>
 
                     </div>
