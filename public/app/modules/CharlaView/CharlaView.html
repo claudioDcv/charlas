@@ -3,8 +3,8 @@
   <div class="container">
     <ol class="breadcrumb">
       <li><a href="/#/public/">Home</a> </li>
-      <li><a href="/#/public/charlas/">Charlas</a> </li>
-      <li class="active">Charla</li>
+      <li><a href="/#/public/charlas/">Actividades disponibles</a> </li>
+      <li class="active">Actividad</li>
     </ol>
       <div>
 
@@ -24,7 +24,7 @@
       </div>
     </div>
     </div>
-        <h3>Charla : {{vm.data.charla.tema}}</h3>
+        <h3>Actividada: {{vm.data.charla.tema}}</h3>
         <button ng-if="!vm.data.charla.tema"
           class="btn btn-default"
           ng-click="vm.goto('public/charlas/buscar')"

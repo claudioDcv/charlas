@@ -4,16 +4,13 @@
     <ol class="breadcrumb">
       <li><a href="index.html">Home</a> </li>
       <li><a href="/#/public">Portal</a></li>
-      <li ng-repeat="item in vm.bread_charla" class={{item.class}}>
-        <a ng-if="item.href" href="{{item.href}}">{{item.text}}</a>
-        <span ng-if="!item.href">{{item.text}}</span>
-      </li>
+      <li><span class="active">Actividades disponibles</span></li>
     </ol>
     <div>
 
-        <h2 class="title">CALENDARIO DE CHARLAS {{vm.data.charlas.expositor}} {{vm.param.type}}</h2>
+        <h2 class="title">Calendario de Actividades {{vm.param.type}}</h2>
         <p style="text-align:justify">
-          El Servicio de Impuestos Internos invita a los contribuyentes a parcicipar de las charlas sobre la Reforma Tributaria, Factura Electr&oacute;nica y Educación fiscal, entre otros temas de interés, que se realizan en las Direcciones Regionales de todo el pais.
+          El Servicio de Impuestos Internos invita a los contribuyentes a parcicipar de las Actividades sobre la Reforma Tributaria, Factura Electr&oacute;nica y Educación fiscal, entre otros temas de interés, que se realizan en las Direcciones Regionales de todo el pais.
         </p>
         <p>
           Infórmese seleccionando la Dirección Regional correspondiente de su domicilio.
@@ -50,7 +47,7 @@
         <div class="alert alert-info" role="alert" ng-if="vm.data.charlas.data.length < 1">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <span class="sr-only">Info:</span>
-          No registra charlas en el sistema
+          No existen Actividades en este momento
         </div>
       </div>
     </div>

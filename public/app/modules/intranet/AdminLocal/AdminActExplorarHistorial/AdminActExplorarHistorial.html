@@ -12,9 +12,14 @@
 
     <div class="col-sm-12 contenido">
         <h3>Listado Actividades Académicas historial</h3>
-        <a href="/#/admin/actividad/explorar" class="btn btn-primary">Actividades Activas</a>
-        <p class="btn btn-primary active">Actividades Incativas</p>
-        <a href="/#/admin/actividad/nueva" class="btn btn-primary">Nueva Actividad Academica</a>
+
+        <div class="sistema-charlas-tab-header">
+          <a href="/#/admin/actividad/explorar" class="sistema-charlas-tab-header-btn">Actividades Activas</a>
+          <p class="sistema-charlas-tab-header-btn">Actividades Incativas</p>
+          <a href="/#/admin/actividad/nueva" class="sistema-charlas-tab-header-btn">Nueva Actividad Academica</a>
+        </div>
+
+
         <!-- <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum autem nesciunt doloribus saepe optio iure exercitationem ut velit, aut voluptatem quibusdam in est modi vitae dolore illum temporibus. Earum, nam!
         </p> -->
@@ -40,7 +45,7 @@
                 <td>{{vm.minutosAHoras(item.duracion)}}</td>
                 <td>
                     <button class="btn btn-primary" ng-click="vm.goto('admin/actividad/ver',item.id)">
-                        Ver Detalle Actividad</button>
+                        Ver Detalle</button>
                 </td>
               </tr>
             </tbody>

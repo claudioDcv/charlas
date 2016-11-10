@@ -11,10 +11,10 @@
 
               <h3>Listado</h3>
               <div class="sistema-charlas-tab-header">
-                <p class="sistema-charlas-tab-header-btn">Charlas Activas</p>
-                <a href="/#/admin-local/historial" class="sistema-charlas-tab-header-btn">Charlas Suspendida</a>
-                <a href="/#/admin-local/historial" class="sistema-charlas-tab-header-btn">Charlas Cancelada</a>
-                <a href="/#/admin-local/historial" class="sistema-charlas-tab-header-btn">Charlas Completadas</a>
+                <p class="sistema-charlas-tab-header-btn">Actividades Programadas Activas</p>
+                <a href="/#/admin-local/listado/charlas" class="sistema-charlas-tab-header-btn">Actividades Programadas Suspendida</a>
+                <a href="/#/admin-local/listado/charlas" class="sistema-charlas-tab-header-btn">Actividades Programadas Cancelada</a>
+                <a href="/#/admin-local/listado/charlas" class="sistema-charlas-tab-header-btn">Actividades Programadas Completadas</a>
             </div>
               <!-- <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum autem nesciunt doloribus saepe optio iure exercitationem ut velit, aut voluptatem quibusdam in est modi vitae dolore illum temporibus. Earum, nam!
@@ -43,7 +43,7 @@
                       <td>{{item.fecha | date:'fullDate'}}</td>
                       <td>{{item.fecha | date:'shortTime'}} a {{item.fechaFin | date:'shortTime'}}</td>
                       <td>{{item.asisitentes}} de {{item.cupos}} personas</td>
-                      <td> <button class = "btn btn-primary" ng-click="vm.goto('evaluacion',1)"> Ver / Editar Charla</button></td>
+                      <td> <button class = "btn btn-primary" ng-click="vm.goto('evaluacion',1)"> Ver / Editar</button></td>
                     </tr>
                   </tbody>
                 </table>

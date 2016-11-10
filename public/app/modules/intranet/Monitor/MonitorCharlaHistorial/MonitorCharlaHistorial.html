@@ -4,16 +4,20 @@
     <ol class="breadcrumb">
       <li><a href="/#/">Home</a></li>
       <li><a href="/#/monitor">Portal</a></li>
-      <li class="active">Historial charlas</li>
+      <li class="active">Actividades Asignadas Historicas</li>
     </ol>
 
       <div>
 
 
     <div class="col-sm-12 contenido">
-        <h3>Charlas Monitor xxxEEEEZZZ</h3>
-        <a href="/#/monitor" class="btn btn-primary">Charlas Activas</a>
-        <p class="btn btn-primary active">Charlas Historicas</p>
+        <h3>Listado Actividades Asignadas Historicas</h3>
+
+
+        <div class="sistema-charlas-tab-header">
+          <a href="/#/monitor" class="sistema-charlas-tab-header-btn">Actividades Asignadas Activas</a>
+          <p class="sistema-charlas-tab-header-btn">Actividades Asignadas Historicas</p>
+        </div>
 
         <!-- <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum autem nesciunt doloribus saepe optio iure exercitationem ut velit, aut voluptatem quibusdam in est modi vitae dolore illum temporibus. Earum, nam!
@@ -43,13 +47,13 @@
                 <td>{{item.fecha | date:'shortTime'}} a {{item.fechaFin | date:'shortTime'}}</td>
                 <td>{{item.asisitentes}} de {{item.cupos}} personas</td>
 
-                <td> <button class = "btn btn-primary" ng-click="vm.goto('evaluacion',1)"> Ver Detalle Charla</button></td> 
+                <td> <button class = "btn btn-primary" ng-click="vm.goto('evaluacion',1)"> Ver Detalle</button></td>
               </tr>
             </tbody>
           </table>
 
 
-          <p>(*):  La  inscripción debe realizarse al menos el día anterior a la fecha de realización  de la charla, en el lugar que se indica. La participación en cada actividad  está sujeta a la disponibilidad de cupos. </p>
+          <p>(*):  La  inscripción debe realizarse al menos el día anterior a la fecha de realización  de la Actividades Asignadas, en el lugar que se indica. La participación en cada actividad  está sujeta a la disponibilidad de cupos. </p>
         </div>
 
 
