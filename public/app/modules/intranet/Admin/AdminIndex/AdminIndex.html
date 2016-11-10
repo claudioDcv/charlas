@@ -1,0 +1,91 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="/#/">Home</a></li>
+      <li class="active">Portal</li>
+    </ol>
+      <div>
+        <h3>Administrador Central</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab est fugiat quis cum praesentium fugit perferendis. Maiores quis voluptatum ullam repellendus similique placeat fugiat quo modi quam totam aliquam, ea!
+        </p>
+
+        <div class="sistema-charlas-bloque bloque-gris bloque-spacer sistema-charlas-table-vertical">
+                            <h3 class="bloque-title ng-binding">Administrador de Actividades Académicas</h3>
+                            <div class="row">
+                              <a href="/#/admin/actividad/nueva" class="col-md-4">
+                                <div class="bloque-image">
+                                  <i aria-hidden="true" class="fa fa-bolt fa-4x fa-azul img-bloque hidden-xs"></i>
+                                  <h4>Creación Nueva Actividad Academica</h4>
+                                </div>
+                              </a>
+                              <a href="/#/admin/actividad/explorar" class="col-md-4">
+                                <div class="bloque-image">
+                                  <i aria-hidden="true" class="fa fa-gear fa-4x fa-azul img-bloque hidden-xs"></i>
+                                  <h4>Administración de Actividades Académicas</h4>
+                                </div>
+                              </a>
+                              <!--
+                              <div class="col-md-6">
+                                <div class="bloque-image">
+                                                    <i aria-hidden="true" class="fa fa-users fa-4x fa-azul img-bloque hidden-xs"></i>
+                                  <h4><a href="#">Administrador de Usuarios Locales</a></h4>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde amet maiores quos beatae nam ratione impedit sunt vel deserunt totam, repellendus, ea, illo, nisi eius ipsam voluptas dolor architecto fugit.</p>
+                                </div>
+                              </div>
+                            -->
+                              <a class="col-md-4" data-toggle="modal" data-target="#modal-reporte-mensual">
+                                <div class="bloque-image">
+                                  <i aria-hidden="true" class="fa fa-download  fa-4x fa-azul img-bloque hidden-xs"></i>
+                                  <h4>Descargar reporte mensual de asistencia</h4>
+                                </div>
+                              </a>
+
+                            </div>
+                        </div>
+
+
+  </div>
+</div>
+</div>
+
+
+
+<reporte-mesual>
+<style media="screen">
+  .modal-backdrop.in{display: none;}
+    reporte-mesual .modal.fade.in{
+          background: hsla(0,0%,0%,.5);
+    }
+</style>
+  <!-- Modal -->
+  <div class="modal fade" id="modal-reporte-mensual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Seleccione Mes</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">MES / AÑO</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" required datetimepicker datetimepicker-options="{{vm.optFechaInforme}}" placeholder="MM/AAAA" ng-model="vm.data.informe.fecha">
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" ng-click="vm.modalReporteMensualCerrar()">Descargar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</reporte-mesual>
+<!-- FIN CUERPO -->

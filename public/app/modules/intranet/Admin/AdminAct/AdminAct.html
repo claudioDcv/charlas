@@ -1,0 +1,51 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="/#/">Home</a></li>
+      <li class="active">Portal</li>
+    </ol>
+
+      <div>
+
+
+    <div class="col-sm-12 contenido">
+        <h3>Charlas Monitor xxxEEEEZZZ</h3>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum autem nesciunt doloribus saepe optio iure exercitationem ut velit, aut voluptatem quibusdam in est modi vitae dolore illum temporibus. Earum, nam!
+        </p>
+
+        <div class="table-responsive">
+          <table id="admCharlas" class="table table-striped table-bordered cf sistema-charlas-table">
+            <thead>
+              <tr>
+                <th>Dirección Regional o Unidad Organizadora</th>
+                <th>Tema</th>
+                <th>Lugar / Dirección</th>
+                <th>Fecha Realización</th>
+                <th>Horario</th>
+                <th>Cupos</th>
+
+
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in vm.data.charlas">
+                <td>{{item.direccion}}</td>
+                <td>{{item.tema}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.fecha | date:'fullDate'}}</td>
+                <td>{{item.fecha | date:'shortTime'}} a {{item.fechaFin | date:'shortTime'}}</td>
+                <td>{{item.asisitentes}} de {{item.cupos}} personas</td>
+                <td> <button class = "btn btn-primary" ng-click="vm.goto('evaluacion',1)"> Ver Detalle Charla</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <p>(*):  La  inscripción debe realizarse al menos el día anterior a la fecha de realización  de la charla, en el lugar que se indica. La participación en cada actividad  está sujeta a la disponibilidad de cupos. </p>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- FIN CUERPO -->

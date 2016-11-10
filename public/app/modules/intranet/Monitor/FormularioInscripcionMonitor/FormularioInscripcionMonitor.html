@@ -1,0 +1,107 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="/#/">Home</a> </li>
+      <li><a href="{{vm.urlAnteriorPortal}}">Portal</a></li>
+      <li><a href="{{vm.urlAnterior}}">{{vm.textoUrlAnterior}}</a></li>
+      <li class="active">Formulario Inscripción</li>
+    </ol>
+      <div>
+        <h3>Formulario Inscripción</h3>
+        <div class="col-md-12">
+        </div>
+        <div class="bloque bloque-gris bloque-spacer sistema-charlas-bloque sistema-charlas-table-vertical">
+            <h3 class="bloque-title">Charla {{vm.data.charla.tema}}</h3>
+            <div class="row">
+                <div class="col-md-3 text-right">ID:</div>
+                <div class="col-md-9">{{vm.data.charla.id}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">TEMA:</div>
+                <div class="col-md-9">{{vm.data.charla.tema}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">DIRECCIÓN REGIONAL:</div>
+                <div class="col-md-9">{{vm.data.charla.dr}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">DIRECCIÓN:</div>
+                <div class="col-md-9">{{vm.data.charla.direccion}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">FECHA:</div>
+                <div class="col-md-9 ">{{vm.data.charla.fecha | date:'fullDate'}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">HORARIO:</div>
+                <div class="col-md-9 ">{{vm.data.charla.fecha | date:'shortTime'}} a {{vm.data.charla.fechaFin | date:'shortTime'}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">MONITOR:</div>
+                <div class="col-md-9">{{vm.data.charla.monitor.nombre}}</div>
+            </div>
+        </div>
+
+        <div class="bg-success col-md-12 sistem-charlas-margin-bottom">
+          <h3>Importante</h3>
+          <p>Para participar en esta charla, debe completar el siguiente formulario</p>
+        </div>
+        <form class="form-horizontal" name="FormNuevaCharla">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">NOMBRE</label>
+            <div class="col-sm-10">
+              <input type="text" ng-maxlength="50" maxlength="50" ng-model="vm.newCharla.nombre" class="form-control" placeholder="Nombre" required replace="[\d+]">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">APPELIDOS</label>
+            <div class="col-sm-10">
+              <input type="text" ng-maxlength="50" maxlength="50" ng-model="vm.newCharla.apellido" class="form-control" placeholder="Apellido Apellido" required replace="[\d+]">
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">RUT</label>
+              <div class="col-sm-10">
+                  <input type="text" ng-rut ng-maxlength="12" ng-minlength="6" minlength="6" maxlength="13" ng-model="vm.newCharla.rut" class="form-control" placeholder="Rut" required>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">EMAIL</label>
+            <div class="col-sm-10">
+              <input type="email" ng-model="vm.newCharla.email" class="form-control" placeholder="Email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">FECHA NACIMIENTO</label>
+
+            <div class="col-sm-10">
+              <input type="text" class="form-control" required
+                   datetimepicker
+                   datetimepicker-options="{icons:{
+                     next:'glyphicon glyphicon-arrow-right',
+                     previous:'glyphicon glyphicon-arrow-left',
+                     up:'glyphicon glyphicon-arrow-up',
+                     down:'glyphicon glyphicon-arrow-down'
+                   },
+                   format: 'DD/MM/YYYY'}"
+                   placeholder="DD/MM/AAAA"
+                   ng-model="vm.newCharla.fechaNacimiento">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">COMUNA</label>
+            <div class="col-sm-10">
+              <input type="text" ng-model="vm.newCharla.comuna" class="form-control" id="inputEmail3" placeholder="Comuna" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid">Registrarse</button>
+            </div>
+          </div>
+        </form>
+
+  </div>
+</div>
+<!-- FIN CUERPO -->

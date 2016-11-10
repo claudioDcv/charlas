@@ -1,0 +1,52 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/#/">Home</a></li>
+            <li><a href="/#/admin">Portal</a></li>
+            <li class="active">Listado Actividades Activas</li>
+        </ol>
+        <div>
+            <div class="col-sm-12 contenido">
+                <h3>Listado Actividades Académicas Activas</h3> <a href="/#/admin/actividad/nueva" class="btn btn-primary">Nueva Actividad Academica</a>
+              <div class="sistema-charlas-tab-header">
+                <p class="sistema-charlas-tab-header-btn">Actividades Activas</p>
+                <a href="/#/admin/actividad/explorar-historial" class="sistema-charlas-tab-header-btn">Actividades Inactivas</a>
+              </div>
+
+
+                <!-- <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum autem nesciunt doloribus saepe optio iure exercitationem ut velit, aut voluptatem quibusdam in est modi vitae dolore illum temporibus. Earum, nam!
+        </p> -->
+
+                <div class="table-responsive">
+                    <table id="admCharlas" class="table table-striped table-bordered cf sistema-charlas-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Titulo</th>
+                                <th>Descripción</th>
+                                <th>Modalidad</th>
+                                <th>Duración</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in vm.data.actividades">
+                                <td>{{item.id}}</td>
+                                <td>{{item.nombre_actividad}}</td>
+                                <td>{{item.descripcion}}</td>
+                                <td>{{item.modalidad}}</td>
+                                <td>{{vm.minutosAHoras(item.duracion)}}</td>
+                                <td>
+                                    <button class="btn btn-primary" ng-click="vm.goto('admin/actividad/ver',item.id)">
+                                        Ver Detalle Actividad</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN CUERPO -->

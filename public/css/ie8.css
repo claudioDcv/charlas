@@ -1,0 +1,12 @@
+.web-sii header #main-menu .dropdown, .web-sii #main-menu .nav > li{
+	position:inherit !important;
+}
+
+.web-sii header #main-menu .dropdown-menu {
+	width:940px !important;
+	left:15px !important;
+}
+
+.web-sii header #main-menu .dropdown-menu .dropdown-menu {
+	left:0 !important;
+}

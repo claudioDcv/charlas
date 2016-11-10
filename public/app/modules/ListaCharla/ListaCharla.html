@@ -1,0 +1,58 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="index.html">Home</a> </li>
+      <li><a href="/#/public">Portal</a></li>
+      <li ng-repeat="item in vm.bread_charla" class={{item.class}}>
+        <a ng-if="item.href" href="{{item.href}}">{{item.text}}</a>
+        <span ng-if="!item.href">{{item.text}}</span>
+      </li>
+    </ol>
+    <div>
+
+        <h2 class="title">CALENDARIO DE CHARLAS {{vm.data.charlas.expositor}} {{vm.param.type}}</h2>
+        <p style="text-align:justify">
+          El Servicio de Impuestos Internos invita a los contribuyentes a parcicipar de las charlas sobre la Reforma Tributaria, Factura Electr&oacute;nica y Educación fiscal, entre otros temas de interés, que se realizan en las Direcciones Regionales de todo el pais.
+        </p>
+        <p>
+          Infórmese seleccionando la Dirección Regional correspondiente de su domicilio.
+        </p>
+        <div class="table-responsive">
+        <table class="table table-condensed table-bordered cf" ng-if="vm.data.charlas.data.length">
+          <thead class="cf">
+            <tr>
+              <th class="text-center" style="vertical-align:middle">DIRECCIÓN REGIONAL O UNIDAD ORGANIZADORA</th>
+              <th class="text-center" style="vertical-align:middle">TEMA</th>
+              <th class="text-center" style="vertical-align:middle">LUGAR / DIRECCIÓN</th>
+              <th class="text-center" style="vertical-align:middle">FECHA REALIZACIÓN</th>
+              <th class="text-center" style="vertical-align:middle">HORARIO</th>
+              <th class="text-center" style="vertical-align:middle" ng-if="vm.param.type != 'historicas'">CUPOS</th>
+              <th class="text-center" style="vertical-align:middle" ng-if="vm.param.type != 'historicas'">INSCRIPCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in vm.data.charlas.data" ng-class="vm.compareCharlas(item.id)">
+              <td>{{item.dr}}</td>
+              <td>{{item.tema}}</td>
+              <td>{{item.direccion}}</td>
+              <td>{{item.fecha | date:'fullDate'}}</td>
+              <td>{{item.fecha | date:'shortTime'}}</td>
+              <td ng-if="vm.param.type != 'historicas'">{{item.cupos}}</td>
+              <td>
+                <button class="btn btn-primary" ng-click="vm.charlaInscribir(item)" ng-if="item.estado == 0">Inscribirme</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        <!-- EN CASO DE NO EXISTIR CURSOS, mostrar este mensaje -->
+        <div class="alert alert-info" role="alert" ng-if="vm.data.charlas.data.length < 1">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Info:</span>
+          No registra charlas en el sistema
+        </div>
+      </div>
+    </div>
+</div>
+<!-- FIN CUERPO -->

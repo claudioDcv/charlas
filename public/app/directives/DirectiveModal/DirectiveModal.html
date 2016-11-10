@@ -1,0 +1,41 @@
+<style media="screen">
+  .modal-backdrop.in{display: none;}
+    modal-cancel-charla .modal.fade.in{
+          background: hsla(0,0%,0%,.5);
+    }
+</style>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-cancel-charla-{{idc}}">
+  <i class="fa fa-trash" aria-hidden="true"></i> Anular inscripción
+</button>
+<div class="modal fade" id="modal-cancel-charla-{{idc}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-dialog-ng" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Seguro que desea cancelar su participación a</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table" id="{{idc}}">
+    <tbody>
+      <tr>
+        <td>Charla</td>
+        <td><strong>{{tema}}</strong></td>
+      </tr>
+    <tr>
+      <td colspan="2">
+        <div class="alert alert-danger" role="alert">
+          Se enviara un email con los datos de su cancelación.
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" ng-click="cancelarInscripcionAction(idc)"><i class="fa fa-trash" aria-hidden="true"></i> Si, cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

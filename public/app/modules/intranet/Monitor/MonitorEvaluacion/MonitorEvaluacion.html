@@ -1,0 +1,124 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/#/">Home</a>
+            </li>
+            <li>
+                <a href="/#/monitor">Portal</a>
+            </li>
+            <li class="active">Formulario de charla</li>
+        </ol>
+
+        <div>
+
+            <div class="col-sm-12 contenido">
+                <h3>Participantes de Charlas</h3>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum autem nesciunt doloribus saepe optio iure exercitationem ut velit, aut voluptatem quibusdam in est modi vitae dolore illum temporibus. Earum, nam!
+                </p>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="sistema-charlas-bloque bloque-gris bloque-spacer sistema-charlas-table-vertical" ng-if="vm.data.charla.tema">
+                            <h3 class="bloque-title">Identificación de charla:
+                                {{vm.data.charla.tema}}</h3>
+                            <div class="row">
+                                <div class="col-md-3 text-right">TEMA:</div>
+                                <div class="col-md-9">{{vm.data.charla.tema}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-right">DIRECCIÓN REGIONAL:</div>
+                                <div class="col-md-9">{{vm.data.charla.dr}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-right">DIRECCIÓN:</div>
+                                <div class="col-md-9">{{vm.data.charla.direccion}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-right">FECHA:</div>
+                                <div class="col-md-9">{{vm.data.charla.fecha | date:'fullDate'}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-right">RUT MONITOR:</div>
+                                <div class="col-md-9">{{vm.data.charla.rut}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-right">NOMBRE MONITOR:</div>
+                                <div class="col-md-9">{{vm.data.charla.nombre}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-right">Acciones:</div>
+                                <div class="col-md-9">
+                                  <button class="btn btn-default">
+                                      <i class="fa fa-print" aria-hidden="true"></i>
+                                      Imprimir lista</button>
+                                  <button class="btn btn-default">
+                                      <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                      Descargar documento</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                  <div class="row">
+                <div class="col-lg-12">
+                                <div class="input-group">
+                                    <input ng-change="vm.getUsuarios()" ng-model="vm.searchInput" type="text" class="form-control input-lg" aria-label="Text input with dropdown button" placeholder="Ingrese texto a buscar...">
+                                </div>
+                            </div>
+                              </div>
+                <div class="table-responsive">
+                    <table id="admCharlas" class="table table-striped table-bordered cf sistema-charlas-table">
+                        <thead>
+                            <tr>
+                                <th>Rut</th>
+                                <th>Nombre</th>
+                                <th>Codigo</th>
+                                <th>Asistió</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in vm.arr track by $index">
+                                <td>{{item.rut}}</td>
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.codigo}}</td>
+                                <td>
+                                  <div class="sistema-charlas-check-container">
+                                    <input type="checkbox" ng-model="item.asistio">
+                                    <label class="checkbox-inline">{{item.asistio?'Si':'No'}}</label>
+                                  </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td colspan="3">
+
+                              </td>
+                              <td>
+                                <agregar-usuario data="vm.data.charla" lista="vm.data.usuarios"></agregar-usuario>
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="btn btn-default" ng-disabled="vm.disableButton">
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                    Guardar asistencia</button>
+                                <modal-cerrar-curso class="sistema-charlas-button-modal" usuarios="vm.data.usuarios" charla="vm.data.charla"></modal-cerrar-charla>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- FIN CUERPO -->

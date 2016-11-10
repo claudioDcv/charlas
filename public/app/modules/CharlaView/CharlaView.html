@@ -1,0 +1,81 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="/#/public/">Home</a> </li>
+      <li><a href="/#/public/charlas/">Charlas</a> </li>
+      <li class="active">Charla</li>
+    </ol>
+      <div>
+
+      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+      <div class="loginmodal-container">
+        <h1>Login to Your Account</h1><br>
+        <form>
+        <input type="text" name="user" placeholder="Username">
+        <input type="password" name="pass" placeholder="Password">
+        <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+        </form>
+
+        <div class="login-help">
+        <a href="#">Register</a> - <a href="#">Forgot Password</a>
+        </div>
+      </div>
+    </div>
+    </div>
+        <h3>Charla : {{vm.data.charla.tema}}</h3>
+        <button ng-if="!vm.data.charla.tema"
+          class="btn btn-default"
+          ng-click="vm.goto('public/charlas/buscar')"
+        ><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver a buscar</button>
+<br/>
+
+        <div class="bloque bloque-gris bloque-spacer sistema-charlas-bloque sistema-charlas-table-vertical" ng-if="vm.data.charla.tema">
+          <h3 class="bloque-title">{{vm.data.charla.tema}}</h3>
+          <div class="row">
+            <div class="col-md-3 text-right">TEMA:</div>
+            <div class="col-md-9">{{vm.data.charla.tema}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-right">CODIGO:</div>
+            <div class="col-md-9">{{vm.data.charla.codigo}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-right">TIPO:</div>
+            <div class="col-md-9">{{vm.data.charla.tipo}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-right">DIRECCIÓN REGIONAL:</div>
+            <div class="col-md-9">{{vm.data.charla.dr}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-right">DIRECCIÓN:</div>
+            <div class="col-md-9">{{vm.data.charla.direccion}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-right">FECHA:</div>
+            <div class="col-md-9">{{vm.data.charla.fecha | date:'fullDate'}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6  text-left">
+              <button
+                class="btn btn-success btn-sistema-charlas"
+                ng-click="vm.charlaVer(item)"
+                ng-if="vm.data.charla.estado == 2 && vm.data.charla.asistio" ><i class="fa fa-download" aria-hidden="true"></i> Obtener Certificado</button>
+              <modal-cancel-charla
+                idc={{vm.data.charla.id}}
+                tema="{{vm.data.charla.tema}}"
+                ng-if="vm.data.charla.estado == 2 && !vm.data.charla.asistio"></modal-cancel-charla>
+              <button
+                class="btn btn-default btn-sistema-charlas"
+                ng-click="vm.goto('public/charlas/buscar')"
+              ><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver a buscar</button>
+            </div>
+          </div>
+          </div>
+        </div>
+  </div>
+</div>
+<!-- FIN CUERPO -->

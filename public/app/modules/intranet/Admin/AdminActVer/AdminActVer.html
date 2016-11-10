@@ -1,0 +1,204 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="/#/">Home</a></li>
+      <li><a href="/#/admin/">Portal</a></li>
+      <li><a href="/#/admin/actividad/explorar">Listado Actividades Académicas</a></li>
+      <li class="active">Ver/Editar Actividad Academica</li>
+    </ol>
+  <div>
+
+    <div class="col-sm-12 contenido">
+        <h3>Ver/Editar Actividad Academica</h3>
+
+        <form class="form-horizontal" name="FormNuevaActAcad">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">NOMBRE ACTIVIDAD</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                ng-maxlength="100"
+                maxlength="100"
+                ng-model="vm.data.actividad.nombre"
+                class="form-control"
+                placeholder="Nombre Actividad"
+                required replace="[\d+]">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">DESCRIPCIÓN quedan: {{255-vm.data.actividad.descripcion.length}}</label>
+            <div class="col-sm-10">
+              <textarea
+                name="name"
+                rows="2"
+                cols="40"
+                ng-maxlength="255"
+                maxlength="255"
+                class="form-control"
+                ng-model="vm.data.actividad.descripcion"
+                placeholder="Descripción"
+                required
+                ></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+              <label class="col-sm-2 control-label">PROGRAMA</label>
+              <div class="col-sm-10">
+                  <input
+                    type="text"
+                    ng-maxlength="100"
+                    ng-minlength="0"
+                    minlength="0"
+                    maxlength="100"
+                    ng-model="vm.data.actividad.programa"
+                    class="form-control"
+                    placeholder="Programa"
+                    required
+                    >
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">DESTINATARIO</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                ng-maxlength="100"
+                ng-minlength="0"
+                minlength="0"
+                maxlength="100"
+                ng-model="vm.data.actividad.destinatario"
+                class="form-control"
+                placeholder="Destinatario"
+                required
+                >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">MODALIDAD</label>
+            <div class="col-sm-10">
+              <select class="form-control" name="" ng-model="vm.data.actividad.modalidad">
+                <option value="1">Presencial</option>
+                <option value="2">e-Learning</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">OBJETIVO</label>
+            <div class="col-sm-10">
+              <input
+              type="text"
+              ng-maxlength="100"
+              ng-minlength="0"
+              minlength="0"
+              maxlength="100"
+              ng-model="vm.data.actividad.objetivo"
+              class="form-control"
+              placeholder="Objetivo"
+              required
+                >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">ESTADO</label>
+            <div class="col-sm-10">
+              <input type="checkbox" ng-model="vm.data.actividad.activa">
+              <label class="checkbox-inline">{{vm.data.actividad.activa?'Activa':'Inactiva'}}</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">METODOLIGÍA quedan: {{1000-vm.data.actividad.metodologia.length}}</label>
+            <div class="col-sm-10">
+              <textarea
+                name="name"
+                rows="8"
+                cols="40"
+                ng-maxlength="1000"
+                maxlength="1000"
+                class="form-control"
+                ng-model="vm.data.actividad.metodologia"
+                placeholder="Metodoligía"
+                required
+                ></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">TIPO PROGRAMA</label>
+            <div class="col-sm-10">
+              <input
+              type="text"
+              ng-maxlength="100"
+              ng-minlength="0"
+              minlength="0"
+              maxlength="100"
+              ng-model="vm.data.actividad.tipo_programa"
+              class="form-control"
+              placeholder="Tipo de programa"
+              required
+                >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">TEMARIO quedan: {{1000-vm.data.actividad.temario.length}}</label>
+            <div class="col-sm-10">
+              <textarea
+                name="name"
+                rows="8"
+                cols="40"
+                ng-maxlength="1000"
+                maxlength="1000"
+                class="form-control"
+                ng-model="vm.data.actividad.temario"
+                placeholder="Temario"
+                required
+                ></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">DOCUMENTO</label>
+            <div class="col-sm-10">
+
+              <a href="{{vm.data.actividad.documento}}" ng-if="vm.data.actividad.documento" class="btn btn-default"><i class="fa fa-download"></i> Descargar documento</a>
+              <button type="button" name="button" ng-if="vm.data.actividad.documento" class="btn btn-default">Cargar nuevo Documento</button>
+              <input ng-if="!vm.data.actividad.documento"
+                type="file"
+                ng-model="vm.data.actividad.documento"
+                class="btn btn-default"
+                required
+                >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">DURACIÓN (minutos) <br/> {{vm.duracionCalculada}}</label>
+            <div class="col-sm-10">
+              <input
+                type="number"
+                ng-model="vm.data.actividad.duracion"
+                class="form-control"
+                required
+                ng-change="vm.duracionCalcular()"
+                >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button
+                class="btn btn-default"
+                ng-click="vm.actividadGrabar()"
+                ng-disabled="FormNuevaActAcad.$invalid"
+                >Crear
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<!-- FIN CUERPO -->

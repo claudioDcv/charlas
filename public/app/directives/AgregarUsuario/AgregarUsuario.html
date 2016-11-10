@@ -1,0 +1,74 @@
+<style media="screen">
+  .modal-backdrop.in{display: none;}
+    agregar-usuario .modal.fade.in{
+          background: hsla(0,0%,0%,.5);
+    }
+
+</style>
+<button class="btn btn-default" ng-click="agregarParticipante()" ><i class="fa fa-user-plus" aria-hidden="true"></i> Agregar</button>
+<div class="modal fade" id="modal-agregar-usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-dialog-ng" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo participante</h4>
+      </div>
+      <div class="modal-body">
+      <form class="form-horizontal" name="FormNuevaCharla">
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">NOMBRE</label>
+          <div class="col-sm-10">
+            <input type="text" ng-maxlength="50" maxlength="50" ng-model="nuevoUsuario.nombre" class="form-control" placeholder="Nombre" required replace="[\d+]">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">APPELIDOS</label>
+          <div class="col-sm-10">
+            <input type="text" ng-maxlength="50" maxlength="50" ng-model="nuevoUsuario.apellido" class="form-control" placeholder="Apellido Apellido" required replace="[\d+]">
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">RUT</label>
+            <div class="col-sm-10">
+                <input type="text" ng-rut ng-maxlength="12" ng-minlength="6" minlength="6" maxlength="13" ng-model="nuevoUsuario.rut" class="form-control" placeholder="Rut" required>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">EMAIL</label>
+          <div class="col-sm-10">
+            <input type="email" ng-model="nuevoUsuario.email" class="form-control" placeholder="Email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">FECHA NACIMIENTO</label>
+
+          <div class="col-sm-10">
+            <input type="text" class="form-control" required
+                 datetimepicker
+                 datetimepicker-options="{icons:{
+                   next:'glyphicon glyphicon-arrow-right',
+                   previous:'glyphicon glyphicon-arrow-left',
+                   up:'glyphicon glyphicon-arrow-up',
+                   down:'glyphicon glyphicon-arrow-down'
+                 },
+                 format: 'DD/MM/YYYY'}"
+                 placeholder="DD/MM/AAAA"
+                 ng-model="nuevoUsuario.fechaNacimiento">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">COMUNA</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="nuevoUsuario.comuna" class="form-control" id="inputEmail3" placeholder="Comuna" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" ng-click="gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid"> Registrar</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sii | Servicio de impuestos internos</title>
+    <link href="css/bootstrap-sii.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="css/estilos.css" rel="stylesheet">
+    <link href="css/jquery.mmenu.all.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+
+    <!--[if lt IE 9]>
+        <link href="css/ie8.css" rel="stylesheet">
+        <script src="js/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+    	<style type="text/css">
+		a[aria-expanded=true] .fa-chevron-down {
+			display: none;
+		}
+		a[aria-expanded=false] .fa-chevron-up {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+<div id="my-wrapper"> 
+	<!-- CABECERA -->
+	<div class="web-sii cabecera Fixed hidden-sm hidden-md hidden-lg">
+		<div class="header">
+			<nav class="navbar navbar-primary">
+				<div class="container"> 
+					<!-- BOTONES MOVIL -->
+					<div class="navbar-header">
+						<button class="navbar-toggle pull-left" type="button" id="abrirMenu"> <span class="sr-only">Mostrar menu</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+						<h1 class="hidden-sm hidden-md hidden-lg"><a href="index.html" title="Sii - Servicio de impuestos internos"><img src="images/logo_movil.png" alt="Sii - Servicio de impuestos internos"></a></h1>
+						<button aria-expanded="false" data-target="#opciones_movil" data-toggle="collapse" class="navbar-toggle collapsed" type="button"><span aria-hidden="true" class="glyphicon glyphicon-user"></span></button>
+						<button aria-expanded="false" data-target="#buscador" data-toggle="collapse" class="navbar-toggle btn-search collapsed" type="button"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
+						<div class="border"></div>
+					</div>
+					<!-- MENU OPCIONES -->
+					<div id="opciones_movil" class="navbar-collapse collapse" aria-expanded="false">
+						<ul class="nav navbar-nav usuario">
+							<li><span class="id">7777777777-7</span>
+								<span class="nombre">Nombre usuario <a href="#" class="badge">2</a></span>
+							</li>
+							<li class="salir"><a href="#">Salir</a>
+							</li>
+						</ul>
+					</div>
+					<!-- BUSCADOR MOVIL -->
+					<div id="buscador" class="navbar-collapse collapse" aria-expanded="false">
+						<form role="search" class="navbar-form navbar-right buscador">
+							<div class="form-group">
+								<label for="text-buscador" class="hidden">Buscador</label>
+								<input type="text" placeholder="Buscar" class="form-control" id="text-buscador">
+							</div>
+							<button class="btn btn-default" type="submit"><span aria-hidden="true" class="glyphicon glyphicon-search"></span> </button>
+						</form>
+					</div>
+				</div>
+			</nav>
+			<!-- MENU MOVIL -->
+			<nav id="my-menu">
+				<ul>
+					<li><a href="#">Mi Sii</a></li>
+					<li><span>Servicios online</span>
+						<ul>
+							<li><a href="#">Inicio de actividades</a> </li>
+							<li><a href="#">Modificaciones, Permisos y Notificación Electrónica</a> </li>
+							<li><a href="#">Timbraje de Documentos</a> </li>
+							<li><a href="#">Factura Electrónica</a> </li>
+							<li><a href="#">Boleta de prestación de servicios de terceros</a> </li>
+							<li><a href="#">Libros contables</a> </li>
+							<li> <span>Impuestos mensuales</span>
+								<ul>
+									<li class="active"><a href="#">Declaraciones mensuales (F29 y F50)</a> </li>
+									<li><a href="#">Consulta y seguimiento a declaraciones (F29 y F50)</a> </li>
+									<li><a href="#">Solicitud Devolución IVA Exportador (F3600)</a> </li>
+									<li><a href="#">Importador de Libros de Compras y Ventas</a> </li>
+									<li><a href="#">Otras aplicaciones</a> </li>
+									<li><a href="#">Información y ayuda (F29, F50 y F3600)</a> </li>
+								</ul>
+							</li>
+							<li><a href="#">Declaraciones juradas</a> </li>
+							<li><a href="#">Renta</a> </li>
+							<li><a href="#">Peticiones Administrativas</a> </li>
+							<li><a href="#">Término de giro</a> </li>
+							<li><a href="#">Información Tasación de Vehículos</a> </li>
+							<li><a href="#">Situación Tributaria</a> </li>
+							<li><a href="#">Servicios online A-Z</a> </li>
+						</ul>
+					</li>
+					<li><a href="#">Ayuda</a></li>
+					<li><span>Contacto</span>
+						<ul>
+							<li> <a href="#">Chat online</a> </li>
+							<li> <a href="#">Orientación y reclamos</a> </li>
+							<li> <a href="#">Sugerencias</a> </li>
+							<li> <a href="#">Denuncias sobre evasión</a> </li>
+							<li> <a href="#">Mesa de Ayuda</a> </li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<!-- FIN MENU MOVIL --> 
+		</div>
+	</div>
+	<div class="web-sii cabecera hidden-xs">
+		<div class="header">
+			<nav class="navbar navbar-primary">
+				<div class="container"> 
+					<!-- MENU OPCIONES -->
+					<div id="opciones" class="navbar-collapse collapse" aria-expanded="false">
+						<ul class="nav navbar-nav usuario">
+							<li><span class="id">7777777777-7</span>
+								<span class="nombre">Nombre usuario <a href="#" class="badge">2</a></span>
+							</li>
+							<li class="salir"><a href="#">Salir</a>
+							</li>
+						</ul>
+						<form role="search" class="navbar-form navbar-right buscador hidden-xs">
+							<div class="form-group">
+								<label for="input-buscador" class="hidden">Buscador</label>
+								<input type="text" placeholder="Buscar" class="form-control" id="input-buscador">
+							</div>
+							<button class="btn btn-default" type="submit"><span aria-hidden="true" class="glyphicon glyphicon-search"></span> </button>
+						</form>
+						<ul class="nav navbar-nav navbar-right hidden-xs">
+							<li class="dropdown" role="presentation"> <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop6"> Contacto <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+								<ul aria-labelledby="drop6" class="dropdown-menu" id="menu3">
+									<li><span>Selecciona un canal:</span> </li>
+									<li> <a href="#"> <i class="fa fa-comments-o fa-2x" aria-hidden="true"></i> Chat online</a> </li>
+									<li> <a href="#"> <i class="fa fa-compass fa-2x" aria-hidden="true"></i> Orientación y reclamos</a> </li>
+									<li> <a href="#"> <i class="fa fa-envelope fa-2x" aria-hidden="true"></i> Sugerencias</a> </li>
+									<li> <a href="#"> <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i> Denuncias sobre evasión</a> </li>
+									<li> <a href="#"> <i class="fa fa-phone fa-2x" aria-hidden="true"></i> Mesa de Ayuda</a> </li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div class="container">
+				<h1 class="pull-left hidden-xs"><a href="index.html" title="Sii - Servicio de impuestos internos"><img src="images/logo.jpg" alt="Sii - Servicio de impuestos internos"></a></h1>
+				<!-- MENU WEB -->
+				<ul class="dropdown nav navbar-nav hidden-xs" id="main-menu">
+					<li><a role="button" href="#">Mi Sii</a></li>
+					<li><a role="button" data-toggle="dropdown" class="#" data-target="#" href="#">Servicios online <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+							<li><a href="#">Inicio de actividades</a> </li>
+							<li><a href="#">Modificaciones, Permisos y Notificación Electrónica</a> </li>
+							<li><a href="#">Timbraje de Documentos</a> </li>
+							<li><a href="#">Factura Electrónica</a> </li>
+							<li><a href="#">Boleta de prestación de servicios de terceros</a> </li>
+							<li><a href="#">Libros contables</a> </li>
+							<li><a href="#">Impuestos mensuales</a> </li>
+							<li><a href="#">Declaraciones juradas</a> </li>
+							<li><a href="#">Renta</a> </li>
+							<li><a href="#">Peticiones Administrativas</a> </li>
+							<li><a href="#">Término de giro</a> </li>
+							<li><a href="#">Información Tasación de Vehículos</a> </li>
+							<li><a href="#">Situación Tributaria</a> </li>
+							<li class="spacer"></li>
+							<li class="last"><a href="#">Servicios online A-Z</a> </li>
+						</ul>
+					</li>
+					<li><a role="button" class="#" data-target="#" href="#">Ayuda</a></li>
+				</ul>
+				<!-- FIN MENU WEB --> 
+			</div>
+		</div>
+	</div>
+	<!-- FIN CABECERA -->
+	<!-- CUERPO -->
+	<div class="web-sii cuerpo">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li><a href="index.html">Home</a> </li>
+				<li class="active">Mi Sii</li>
+			</ol>
+
+			<div class="container">
+			<div class="col-sm-12 contenido">
+					<h2 class="title">Charlas de asistencia al contribuyente</h2>
+
+					<p style="text-align:justify">
+						El Servicio de Impuestos Internos invita a los contribuyentes a parcicipar de las charlas sobre la Reforma Tributaria, Factura Electr&oacute;nica y Educación fiscal, entre otros temas de interés, que se realizan en las Direcciones Regionales de todo el pais.
+					</p>
+					<p>
+						Infórmese seleccionando la Dirección Regional correspondiente de su domicilio.
+					</p>
+						
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#collapse1" aria-expanded="false">
+										DIRECCIONES REGIONALES METROPOLITANAS
+										<i class="fa fa-chevron-down pull-right"></i>
+										<i class="fa fa-chevron-up pull-right"></i>
+									</a>
+								</h4>
+							</div>
+							<div id="collapse1" class="panel-collapse collapse">
+								<ul class="list-group">
+									<li class="list-group-item"><a href="dr_norte.htm">DR Metropolitana Norte</a></li>
+									<li class="list-group-item"><a href="dr_oriente.htm">DR Metropolitana Oriente</a></li>
+									<li class="list-group-item"><a href="dr_centro.htm">DR Metropolitana Centro</a></li>
+
+									<li class="list-group-item"><a href="dr_sur.htm">DR Metropolitana Sur</a></li>
+									<li class="list-group-item"><a href="dr_poniente.htm">DR Metropolitana Poniente</a></li>
+					
+									
+
+								</ul>
+							</div>
+						</div><!--fin panel 1-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#collapse2" aria-expanded="false">
+										DIRECCIONES REGIONALES
+										<i class="fa fa-chevron-down pull-right"></i>
+										<i class="fa fa-chevron-up pull-right"></i>
+									</a>
+								</h4>
+							</div>
+							<div id="collapse2" class="panel-collapse collapse">
+								<ul class="list-group">
+									<li class="list-group-item">DR Arica</li>
+									<li class="list-group-item"><a href="concepcion.htm">DR Concepci&oacute;n</a></li>
+									<li class="list-group-item"><a href="iquique.htm">DR Iquique</a></li>
+
+									<li class="list-group-item"><a href="temuco.htm">DR Temuco</a></li>
+									<li class="list-group-item"><a href="antofagasta.htm">DR Antofagasta</a></li>
+
+									<li class="list-group-item"><a href="valdivia.htm">DR Valdivia</a></li>
+									
+									<li class="list-group-item">DR Copiap&oacute;</li>
+									<li class="list-group-item"><a href="puerto_montt.htm">DR Puerto Montt</a></li>
+									<li class="list-group-item"><a href="la_serena.htm">DR La Serena</a></li>
+									<li class="list-group-item"><a href="valparaiso.htm">DR Valpara&iacute;so</a></li>
+
+									<li class="list-group-item"><a href="punta_arenas.htm">DR Punta Arenas</a></li>
+									<li class="list-group-item">DR Coyhaique</li>
+
+									<li class="list-group-item"><a href="rancagua.htm">DR Rancagua</a></li>
+									<li class="list-group-item">DR Talca</li>
+
+
+
+
+					
+									
+
+								</ul>
+							</div>
+						</div><!-- fin panel 2-->
+					</div> <!-- div panel group -->
+					
+				</div>	
+
+
+			
+			</div>
+	</div>
+	<!-- FIN CUERPO --> 
+	<!-- PIE -->
+	<div class="web-sii pie">
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-2-5">
+						<h3 class="hidden-xs">Institucional</h3>
+						<div class="btn btn-block navbar-toggle hidden-sm hidden-md hidden-lg arrow-click" data-target=".pie01" data-toggle="collapse"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> Institucional</div>
+						<ul class="list-unstyled collapse navbar-collapse pie01">
+							<li><a href="mision.html">Sobre el Sii</a> </li>
+							<li><a href="#">Sii contrata personal</a> </li>
+							<li><a href="noticias.html">Noticias</a> </li>
+							<li><a href="#">Inversionistas extranjeros</a> </li>
+							<li><a href="#">Seguridad</a> </li>
+						</ul>
+					</div>
+					<div class="col-sm-12 col-md-2-5">
+						<h3 class="hidden-xs">Asistencia</h3>
+						<div class="btn btn-block navbar-toggle hidden-sm hidden-md hidden-lg arrow-click" data-target=".pie02" data-toggle="collapse"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> Asistencia</div>
+						<ul class="list-unstyled collapse navbar-collapse pie02">
+							<li><a href="oficinas_y_horarios.html">Oficinas</a> </li>
+							<li><a href="#">Orientaciones y reclamos</a> </li>
+							<li><a href="#">Sugerencias</a> </li>
+							<li><a href="#">Denuncias sobre evasión</a> </li>
+							<li><a href="#">Mesa de ayuda</a> </li>
+						</ul>
+					</div>
+					<div class="col-sm-12 col-md-2-5">
+						<h3 class="hidden-xs">Comunicación</h3>
+						<div class="btn btn-block navbar-toggle hidden-sm hidden-md hidden-lg arrow-click" data-target=".pie03" data-toggle="collapse"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> Comunicación</div>
+						<ul class="list-unstyled collapse navbar-collapse pie03">
+							<li><a href="#">Facebook</a> </li>
+							<li><a href="#">Twitter</a> </li>
+							<li><a href="#">Youtube</a> </li>
+							<li><a href="#">RSS</a> </li>
+							<li><a href="#">App Sii Móvil</a> </li>
+						</ul>
+					</div>
+					<div class="col-sm-12 col-md-2-5">
+						<h3 class="hidden-xs">Enlaces de interés</h3>
+						<div class="btn btn-block navbar-toggle hidden-sm hidden-md hidden-lg arrow-click" data-target=".pie04" data-toggle="collapse"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> Enlaces de interés</div>
+						<ul class="list-unstyled collapse navbar-collapse pie04">
+							<li><a href="#">Ley de transparencia</a> </li>
+							<li><a href="#">Licitaciones Sii</a> </li>
+							<li><a href="#">Enlaces externos</a> </li>
+							<li><a href="#">Gobierno de Chile</a> </li>
+							<li><a href="#">Más</a> </li>
+						</ul>
+					</div>
+					<div class="col-sm-12 col-md-2-5">
+						<h3 class="hidden-xs">Valores y fechas</h3>
+						<div class="btn btn-block navbar-toggle hidden-sm hidden-md hidden-lg arrow-click" data-target=".pie05" data-toggle="collapse"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> Valores y fechas</div>
+						<ul class="list-unstyled collapse navbar-collapse pie05">
+							<li><a href="#">UF</a> </li>
+							<li><a href="#">Dólar</a> </li>
+							<li><a href="#">UTM</a> </li>
+							<li><a href="#">Corrección monetaria</a> </li>
+							<li><a href="#">Otros valores</a> </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- FIN PIE --> 
+</div>
+<script src="js/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/bootstrap-select.min.js"></script> 
+<script src="js/jquery.mobile.custom.min.js"></script> 
+<script src="js/jquery.mmenu.all.min.js" type="text/javascript"></script> 
+<script src="js/jquery.mmenu.fixedelements.js" type="text/javascript"></script> 
+<script src="js/functions.js"></script>
+</body>
+</html>

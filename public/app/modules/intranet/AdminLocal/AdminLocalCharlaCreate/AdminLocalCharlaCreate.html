@@ -1,0 +1,191 @@
+<!-- CUERPO -->
+<div class="web-sii cuerpo">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/#/">Home</a></li>
+            <li><a href="/#/admin-local">Portal</a></li>
+            <li class="active">Nueva charla</li>
+        </ol>
+        <!-- CUERPO -->
+                <div>
+                    <div class="col-sm-12 contenido">
+                        <form class="form-horizontal" name="FormNuevaCharla">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">FECHA INICIO</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" required datetimepicker datetimepicker-options="{{vm.optFechaInicio}}" ng-change="vm.listen()" placeholder="DD/MM/AAAA" ng-model="vm.data.charla.fechaInicio">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">FECHA TERMINO</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" required datetimepicker datetimepicker-options="{{vm.optFechaFin}}" ng-change="vm.listen()" placeholder="DD/MM/AAAA" ng-model="vm.data.charla.fechaTermino">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                      <table class="table table-striped">
+                                        <tr>
+                                          <th>Dia</th>
+                                          <th>Hora Inicio</th>
+                                          <th>Hora Termino</th>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="text" class="form-control" required datetimepicker datetimepicker-options="{{vm.formatFecha}}" placeholder="DD/MM/AAAA" ng-model="vm.data.charla.a"></td>
+                                          <td><input type="number" min="1" max="24">:<input type="number" min="0" max="60"></td>
+                                          <td><input type="number" min="1" max="24">:<input type="number" min="0" max="60"></td>
+                                        </tr>
+                                      </table>
+                                    </div>
+                                  </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">CUPOS</label>
+                                <div class="col-sm-10">
+                                    <input type="number" required name="name" value="" class="form-control" ng-model="vm.data.charla.cupos" min="0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">DIRECCIÓN</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-maxlength="100" ng-minlength="0" minlength="0" maxlength="100" ng-model="vm.data.charla.direccion" class="form-control" placeholder="Dirección" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">ESTADO</label>
+                                <div class="col-sm-10">
+
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="1">activo
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="2">suspendido
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="3">cancelado
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">DR</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" ng-model="vm.data.charla.dr">
+                                        <option ng-repeat="item in vm.dr  | orderBy:'nombreUnidad'">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">COMUNA</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" ng-model="vm.data.charla.comuna">
+                                        <option ng-repeat="item in vm.comunas  | orderBy:'descripcion'" value="{{item.codigo}}">{{item.descripcion}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">RUT MONITOR</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-rut ng-maxlength="12" ng-minlength="6" minlength="6" maxlength="13" ng-model="vm.data.charla.monitorSelect" class="form-control" placeholder="Rut" required>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                  <div class="input-group">
+                                    <input type="text" readonly ng-model="vm.data.charla.actividadSelectHumanText" value="" class="form-control">
+                                    <span class="input-group-btn">
+                                      <button class="btn btn-default" data-toggle="modal" data-target="#selecion-actividad">Seleccionar Actividad Academica</button>
+                                    </span>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-default" ng-click="vm.gotoCrear()" ng-disabled="FormNuevaCharla.$invalid">Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- FIN CUERPO -->
+
+            <style media="screen">
+                .modal-backdrop.in {
+                    display: none;
+                }
+                modal-add-charla .modal.fade.in {
+                    background: hsla(0,0%,0%,.5);
+                }
+
+            </style>
+            <modal-add-charla>
+                <div class="modal fade bs-example-modal-lg" id="selecion-actividad" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="sistema-charla-modal-container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese texto a buscar...">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <table class="table" id="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Descripción</th>
+
+                                                    <th>Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tipo de contribuyente</td>
+                                                    <td>esta actividad tiene como...</td>
+
+                                                    <td><button type="button" ng-click="vm.selectAct(1,'Tipo de contribuyente')" class="btn btn-primary">
+                                                      <i class="fa fa-plus" aria-hidden="true"></i> Seleccionar
+                                                    </button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Como declarar IVA</td>
+                                                    <td>esta actividad tiene como...</td>
+
+                                                    <td><button type="button" ng-click="vm.selectAct(2,'Como declarar IVA')" class="btn btn-primary">
+                                                      <i class="fa fa-plus" aria-hidden="true"></i> Seleccionar
+                                                    </button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Una nueva Forma de hacer las cosas</td>
+                                                    <td>esta actividad tiene como...</td>
+
+                                                    <td><button type="button" ng-click="vm.selectAct(3,'Una nueva Forma de hacer las cosas')" class="btn btn-primary">
+                                                      <i class="fa fa-plus" aria-hidden="true"></i> Seleccionar
+                                                    </button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </modal-add-charla>
