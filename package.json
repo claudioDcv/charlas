@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/claudioDcv/charlas/issues"
   },
-  "homepage": "https://github.com/claudioDcv/charlas#readme"
+  "homepage": "https://github.com/claudioDcv/charlas#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
