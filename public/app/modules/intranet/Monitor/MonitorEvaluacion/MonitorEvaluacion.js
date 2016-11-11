@@ -1,9 +1,9 @@
 MonitorEvaluacion.$inject = ['$scope', 'ServiceUsuario', 'ServiceHTTP',
-  'FactoryLoader', '$location', '$routeParams'
+  'FactoryLoader', '$location', '$routeParams', '$timeout'
 ];
 
 function MonitorEvaluacion($scope, ServiceUsuario, ServiceHTTP, FactoryLoader,
-  $location, $routeParams) {
+  $location, $routeParams, $timeout) {
   console.log(ServiceUsuario.getData());
 
   var vm = this;
@@ -13,7 +13,6 @@ function MonitorEvaluacion($scope, ServiceUsuario, ServiceHTTP, FactoryLoader,
   vm.data.charla = {};
   vm.data.usuarios = [];
   vm.arr = [];
-
   vm.agregarParticipante = agregarParticipante;
 
   function agregarParticipante() {
@@ -27,6 +26,21 @@ function MonitorEvaluacion($scope, ServiceUsuario, ServiceHTTP, FactoryLoader,
       vm.data.charla = data.data.identificacion;
       vm.data.usuarios = data.data.listado;
       angular.copy(vm.data.usuarios, vm.arr)
+
+
+      $scope.$watch('vm.data.usuarios', function(newValue, oldValue) {
+
+        if (newValue != oldValue) {
+          console.log(1);
+          vm.disableButton = false;
+        } else {
+          console.log(2);
+          vm.disableButton = true;
+          console.log(vm.disableButton);
+        }
+
+      }, true);
+
     }
 
     function resultNOK(err) {
@@ -80,18 +94,7 @@ function MonitorEvaluacion($scope, ServiceUsuario, ServiceHTTP, FactoryLoader,
 
 
   vm.disableButton = true;
-  setTimeout(function() {
-    $scope.$watch('vm.data.usuarios', function(newValue, oldValue) {
 
-      if (newValue != oldValue) {
-        console.log(1);
-        vm.disableButton = false;
-      } else {
-        2
-      }
-
-    }, true);
-  }, 500);
 
 }
 

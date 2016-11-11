@@ -8,7 +8,9 @@
             <li>
                 <a href="/#/admin-local">Portal</a>
             </li>
-
+            <li>
+                <a href="/#/admin-local/listado/charlas">Listado de Actividades Programadas</a>
+            </li>
             <li class="active">Ver / Editar Actividad Programada</li>
         </ol>
         <div>
@@ -80,7 +82,7 @@
                             <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid"> Guardar
                             </button>
 
-                            <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid"> Suspender y Notificar
+                            <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid" data-toggle="modal" data-target="#modal-suspender-charla"> Suspender y Notificar
                             </button>
                         </div>
                     </div>
@@ -96,6 +98,9 @@
             display: none;
         }
         modal-add-charla .modal.fade.in {
+            background: hsla(0,0%,0%,.5);
+        }
+        modal-suspender-charla .modal.fade.in {
             background: hsla(0,0%,0%,.5);
         }
 
@@ -171,3 +176,28 @@
 
 
     </modal-add-charla>
+
+<modal-suspender-charla>
+
+    <div class="modal fade" id="modal-suspender-charla" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-dialog-ng" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Seguro que desea suspender esta Actividad?</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table" id="{{idc}}">
+        <tbody>
+          <p>Recuerde que esta acción no se puede deshacer.</p>
+        </tbody>
+      </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> No, suspendere en otro momento</button>
+            <button type="button" class="btn btn-primary" ng-click="vm.suspenderActividad(idc)"><i class="fa fa-check" aria-hidden="true"></i> Si, suspender ahora esta Actividad</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</modal-suspender-charla>
