@@ -20,37 +20,50 @@
                 <input maxlength="6" type="text" placeholder="XXXXXX" class="form-control custom-input input-lg" ng-model="codigo" ng-change="formatText(codigo)" required>
               </div>
           </div>
+
+
+        </div>
+        <div class="input-group col-md-6 col-md-offset-3">
+
+
           <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label"></label>
               <div class="col-sm-10">
-                <button class="btn btn-default btn-lg" type="submit" ng-click="buscar()" ng-disabled="!formIsValid()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                <div class="text-center sistema-charlas-captcha-container">
+                  <div>
+                    <img src="{{url_captcha}}" alt="" class="img-responsive-center"/>
+                    <div class = "input-group">
+                      <input maxlength="4" minlength="4" type="text" placeholder="Escriba captcha" class="form-control" ng-model="captcha" required>
+                         <div class = "input-group-btn">
+                          <button type = "button" class = "btn btn-default" ng-click="regenerate()">
+                             Refrescar
+                          </button>
+                       </div>
+                    </div>
+                 </div>
+               </div><!-- fin captcha -->
+
               </div>
           </div>
 
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <div ng-if="isErrorBuscar" id="sistema-charlas-alert-error-search" class="alert alert-warning alert-dismissible fade in" role="alert">
-              <div class="close" aria-label="Close" ng-click="cerrarErrorBuscar()">
-                <span aria-hidden="true">&times;</span>
-              </div>
-              <strong>Código invalido</strong> intentelo nuevamente. (AAA111,AAA222)
-            </div>
-          </div>
-        </div>
-        <div class="text-center sistema-charlas-captcha-container">
-          <div>
-            <img src="{{url_captcha}}" alt="" class="img-responsive-center"/>
-            <div class = "input-group">
-              <input maxlength="4" minlength="4" type="text" placeholder="Escriba captcha" class="form-control" ng-model="captcha" required>
-                 <div class = "input-group-btn">
-                  <button type = "button" class = "btn btn-default" ng-click="regenerate()">
-                     Refrescar
-                  </button>
-               </div>
-            </div>
+         <div class="form-group">
+             <label for="inputEmail3" class="col-sm-2 control-label"></label>
+             <div class="col-sm-10">
+               <button class="btn btn-default btn-lg" type="submit" ng-click="buscar()" ng-disabled="!formIsValid()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+             </div>
          </div>
-       </div><!-- fin captcha -->
+
+         <div class="row">
+           <div class="col-md-4 col-md-offset-4">
+             <div ng-if="isErrorBuscar" id="sistema-charlas-alert-error-search" class="alert alert-warning alert-dismissible fade in" role="alert">
+               <div class="close" aria-label="Close" ng-click="cerrarErrorBuscar()">
+                 <span aria-hidden="true">&times;</span>
+               </div>
+               <strong>Código invalido</strong> intentelo nuevamente. (AAA111,AAA222)
+             </div>
+           </div>
+         </div>
+        </div>
       </form>
   </div>
 </div>

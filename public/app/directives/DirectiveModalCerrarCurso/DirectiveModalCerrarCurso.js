@@ -1,43 +1,48 @@
-(function () {
+(function() {
   'use strict'
 
   angular
     .module('sistemaCharlas')
     .directive('modalCerrarCurso', ModalCerrarCurso);
 
-  ModalCerrarCurso.$inject = ['ServiceHTTP','$location','$timeout'];
-  function ModalCerrarCurso (ServiceHTTP,$location,$timeout) {
+  ModalCerrarCurso.$inject = ['ServiceHTTP', '$location', '$timeout'];
+
+  function ModalCerrarCurso(ServiceHTTP, $location, $timeout) {
     return {
       restrict: 'E',
       scope: {
         'curso': '@',
-        'usuarios' : '@',
+        'perfil': '@',
+        'usuarios': '@',
       },
       templateUrl: './app/directives/DirectiveModalCerrarCurso/DirectiveModalCerrarCurso.html',
-      link: function ($scope, element, attrs) {
+      link: function($scope, element, attrs) {
+        $scope.idc = 0;
+        $scope.cancelarInscripcionAction = function(idc) {
+            $('#modal-cerrar-curso').modal('hide');
 
-              $scope.cancelarInscripcionAction = function(){
-                $('#modal-cerrar-curso').modal('hide');
+            console.log($scope.idc);
 
-                var result = ServiceHTTP.delInscripcion($scope.idc);
-
-                $timeout(function () {
-                  $location.path('monitor');
-                }, 500);
-              }
-              /*
-              element.on('click', function () {
-                console.log($scope.idc);
-                  element.css('background-color', 'red');
-              });
-              element.on('mouseenter', function () {
-                  element.css('background-color', 'yellow');
-              });
-              element.on('mouseleave', function () {
-                  element.css('background-color', 'white');
-              });
-              */
+            var result = ServiceHTTP.delInscripcion(idc);
+            console.log($scope.perfil);
+            $timeout(function() {
+              console.log('monitor/' + $scope.perfil);
+              $location.path('monitor/charlas/' + $scope.perfil);
+            }, 500);
           }
+          /*
+          element.on('click', function () {
+            console.log($scope.idc);
+              element.css('background-color', 'red');
+          });
+          element.on('mouseenter', function () {
+              element.css('background-color', 'yellow');
+          });
+          element.on('mouseleave', function () {
+              element.css('background-color', 'white');
+          });
+          */
+      }
     }
   }
 

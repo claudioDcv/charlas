@@ -30,401 +30,376 @@ angular.module('sistemaCharlas')
 angular.module('sistemaCharlas')
 
 .config(function($routeProvider, CONST) {
-    //$locationProvider.html5Mode(true);
+  //$locationProvider.html5Mode(true);
 
-    $routeProvider
-        .when('/public/', {
-            templateUrl: CONST.MODULE_PATH + 'Index/Index.html',
-            controller: 'Index',
-            controllerAs: 'vm'
-        })
-
-    .when('/public/charlas', {
-        templateUrl: CONST.MODULE_PATH + 'CharlasIndex/CharlasIndex.html',
-        controller: 'CharlasIndex',
-        controllerAs: 'vm'
+  $routeProvider
+    .when('/public/', {
+      templateUrl: CONST.MODULE_PATH + 'Index/Index.html',
+      controller: 'Index',
+      controllerAs: 'vm'
     })
 
-    .when('/public/charlas/buscar', {
-        templateUrl: CONST.MODULE_PATH + 'CharlaPorCodigo/CharlaPorCodigo.html',
-        controller: 'CharlaPorCodigo',
-        controllerAs: 'vm'
+  .when('/public/charlas', {
+    templateUrl: CONST.MODULE_PATH + 'CharlasIndex/CharlasIndex.html',
+    controller: 'CharlasIndex',
+    controllerAs: 'vm'
+  })
+
+  .when('/public/charlas/buscar', {
+    templateUrl: CONST.MODULE_PATH +
+      'CharlaPorCodigo/CharlaPorCodigo.html',
+    controller: 'CharlaPorCodigo',
+    controllerAs: 'vm'
+  })
+
+  .when('/public/charlas/charla', {
+    templateUrl: CONST.MODULE_PATH + 'CharlaView/CharlaView.html',
+    controller: 'CharlaView',
+    controllerAs: 'vm'
+  })
+
+
+  .when('/public/charlas/listado/:dr', {
+    templateUrl: CONST.MODULE_PATH + 'ListaCharla/ListaCharla.html',
+    controller: 'ListaCharla',
+    controllerAs: 'vm'
+  })
+
+  .when('/public/formulario-de-inscripcion/:call/:dr/:id', {
+      templateUrl: CONST.MODULE_PATH +
+        'FormularioInscripcion/FormularioInscripcion.html',
+      controller: 'FormularioInscripcion',
+      controllerAs: 'vm'
     })
-
-    .when('/public/charlas/charla', {
-        templateUrl: CONST.MODULE_PATH + 'CharlaView/CharlaView.html',
-        controller: 'CharlaView',
-        controllerAs: 'vm'
-    })
-
-
-    .when('/public/charlas/listado/:dr', {
-        templateUrl: CONST.MODULE_PATH + 'ListaCharla/ListaCharla.html',
-        controller: 'ListaCharla',
-        controllerAs: 'vm'
-    })
-
-    .when('/public/formulario-de-inscripcion/:call/:dr/:id', {
-            templateUrl: CONST.MODULE_PATH + 'FormularioInscripcion/FormularioInscripcion.html',
-            controller: 'FormularioInscripcion',
-            controllerAs: 'vm'
-        })
     .when('/public/detalle-inscripcion/:call/:dr/:id', {
-        templateUrl: CONST.MODULE_PATH + 'CodigoConfirmacion/CodigoConfirmacion.html',
-        controller: 'CodigoConfirmacion',
-        controllerAs: 'vm'
+      templateUrl: CONST.MODULE_PATH +
+        'CodigoConfirmacion/CodigoConfirmacion.html',
+      controller: 'CodigoConfirmacion',
+      controllerAs: 'vm'
     })
 
-    //ROUTE FOR ADMIN
-    .when('/admin/', {
-            templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminIndex/AdminIndex.html',
-            controller: 'AdminIndex',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('admin').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
+  //ROUTE FOR ADMIN
+  .when('/admin/', {
+    templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminIndex/AdminIndex.html',
+    controller: 'AdminIndex',
+    controllerAs: 'vm',
+    resolve: {
+      access: function(FactorySecure) {
+        FactorySecure.control('admin').then(
+          function(thing) {
+            console.log(thing);
+          },
+          function(message) {
+            FactorySecure.goto('public');
+          }
+        );
+      }
+    }
+  })
+
+  .when('/admin/charlas', {
+      templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminAct/AdminAct.html',
+      controller: 'AdminAct',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
             }
-        })
-
-        .when('/admin/charlas', {
-                templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminAct/AdminAct.html',
-                controller: 'AdminAct',
-                controllerAs: 'vm',
-                resolve: {
-                    access: function(FactorySecure) {
-                        FactorySecure.control('admin').then(
-                            function(thing) {
-                                console.log(thing);
-                            },
-                            function(message) {
-                                FactorySecure.goto('public');
-                            }
-                        );
-                    }
-                }
-            })
-            .when('/admin/actividad/nueva', {
-                    templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminActAcad/AdminActAcad.html',
-                    controller: 'AdminActAcad',
-                    controllerAs: 'vm',
-                    resolve: {
-                        access: function(FactorySecure) {
-                            FactorySecure.control('admin').then(
-                                function(thing) {
-                                    console.log(thing);
-                                },
-                                function(message) {
-                                    FactorySecure.goto('public');
-                                }
-                            );
-                        }
-                    }
-                })
-
-                .when('/admin/actividad/explorar', {
-                        templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminActExplorar/AdminActExplorar.html',
-                        controller: 'AdminActExplorar',
-                        controllerAs: 'vm',
-                        resolve: {
-                            access: function(FactorySecure) {
-                                FactorySecure.control('admin').then(
-                                    function(thing) {
-                                        console.log(thing);
-                                    },
-                                    function(message) {
-                                        FactorySecure.goto('public');
-                                    }
-                                );
-                            }
-                        }
-                    })
-
-                .when('/admin/actividad/explorar-historial', {
-                        templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminActExplorarHistorial/AdminActExplorarHistorial.html',
-                        controller: 'AdminActExplorarHistorial',
-                        controllerAs: 'vm',
-                        resolve: {
-                            access: function(FactorySecure) {
-                                FactorySecure.control('admin').then(
-                                    function(thing) {
-                                        console.log(thing);
-                                    },
-                                    function(message) {
-                                        FactorySecure.goto('public');
-                                    }
-                                );
-                            }
-                        }
-                    })
-                  .when('/admin/actividad/ver/:id', {
-                          templateUrl: CONST.MODULE_PATH_ADMIN + 'AdminActVer/AdminActVer.html',
-                          controller: 'AdminActVer',
-                          controllerAs: 'vm',
-                          resolve: {
-                              access: function(FactorySecure) {
-                                  FactorySecure.control('admin').then(
-                                      function(thing) {
-                                          console.log(thing);
-                                      },
-                                      function(message) {
-                                          FactorySecure.goto('public');
-                                      }
-                                  );
-                              }
-                          }
-                      })
-        //ADMIN LOCAL
-        .when('/admin-local/', {
-            templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminLocalIndex/AdminLocalIndex.html',
-            controller: 'AdminLocalIndex',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('admin-local').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-        .when('/admin-local/listado/charlas', {
-            templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminLocalCharlaExplora/AdminLocalCharlaExplora.html',
-            controller: 'AdminLocalCharlaExplora',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('admin-local').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-
-
-        .when('/admin-local/actividad/explorar', {
-                templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminActExplorar/AdminActExplorar.html',
-                controller: 'AdminLocalActExplorar',
-                controllerAs: 'vm',
-                resolve: {
-                    access: function(FactorySecure) {
-                        FactorySecure.control('admin-local').then(
-                            function(thing) {
-                                console.log(thing);
-                            },
-                            function(message) {
-                                FactorySecure.goto('public');
-                            }
-                        );
-                    }
-                }
-            })
-
-        .when('/admin-local/actividad/explorar-historial', {
-                templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminActExplorarHistorial/AdminActExplorarHistorial.html',
-                controller: 'AdminLocalActExplorarHistorial',
-                controllerAs: 'vm',
-                resolve: {
-                    access: function(FactorySecure) {
-                        FactorySecure.control('admin-local').then(
-                            function(thing) {
-                                console.log(thing);
-                            },
-                            function(message) {
-                                FactorySecure.goto('public');
-                            }
-                        );
-                    }
-                }
-            })
-          .when('/admin-local/actividad/ver/:id', {
-                  templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminActVer/AdminActVer.html',
-                  controller: 'AdminLocalActVer',
-                  controllerAs: 'vm',
-                  resolve: {
-                      access: function(FactorySecure) {
-                          FactorySecure.control('admin-local').then(
-                              function(thing) {
-                                  console.log(thing);
-                              },
-                              function(message) {
-                                  FactorySecure.goto('public');
-                              }
-                          );
-                      }
-                  }
-              })
-
-
-        //CREATE charlas
-        .when('/admin-local/listado/charlas/create', {
-            templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminLocalCharlaCreate/AdminLocalCharlaCreate.html',
-            controller: 'AdminLocalCharlaCreate',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('admin-local').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-        .when('/admin-local/listado/charlas/ver/:id', {
-            templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminLocalCharlaVer/AdminLocalCharlaVer.html',
-            controller: 'AdminLocalCharlaVer',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('admin-local').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-        .when('/admin-local/listado/actidivades', {
-            templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL + 'AdminLocalActAcadExplora/AdminLocalActAcadExplora.html',
-            controller: 'AdminLocalActAcadExplora',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('admin-local').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-        //MONITOR
-        .when('/monitor', {
-            templateUrl: CONST.MODULE_PATH_MONITOR + 'MonitorCharla/MonitorCharla.html',
-            controller: 'MonitorCharla',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('monitor').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-
-        .when('/monitor/historial', {
-            templateUrl: CONST.MODULE_PATH_MONITOR + 'MonitorCharlaHistorial/MonitorCharlaHistorial.html',
-            controller: 'MonitorCharlaHistorial',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('monitor').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-
-        .when('/monitor/charlas/evaluacion/:id', {
-            templateUrl: CONST.MODULE_PATH_MONITOR + 'MonitorEvaluacion/MonitorEvaluacion.html',
-            controller: 'MonitorEvaluacion',
-            controllerAs: 'vm',
-            resolve: {
-                access: function(FactorySecure) {
-                    FactorySecure.control('monitor').then(
-                        function(thing) {
-                            console.log(thing);
-                        },
-                        function(message) {
-                            FactorySecure.goto('public');
-                        }
-                    );
-                }
-            }
-        })
-
-    .when('/monitor/formulario-de-inscripcion/:call/:dr/:id', {
-        templateUrl: CONST.MODULE_PATH_MONITOR + 'FormularioInscripcionMonitor/FormularioInscripcionMonitor.html',
-        controller: 'FormularioInscripcionMonitor',
-        controllerAs: 'vm',
-        resolve: {
-            access: function(FactorySecure) {
-                FactorySecure.control('monitor').then(
-                    function(thing) {
-                        console.log(thing);
-                    },
-                    function(message) {
-                        FactorySecure.goto('public');
-                    }
-                );
-            }
+          );
         }
+      }
     })
-
-
-    .when('/monitor/detalle-inscripcion/:call/:dr/:id', {
-        templateUrl: CONST.MODULE_PATH_MONITOR + 'CodigoConfirmacionMonitor/CodigoConfirmacionMonitor.html',
-        controller: 'CodigoConfirmacionMonitor',
-        controllerAs: 'vm',
-        resolve: {
-            access: function(FactorySecure) {
-                FactorySecure.control('monitor').then(
-                    function(thing) {
-                        console.log(thing);
-                    },
-                    function(message) {
-                        FactorySecure.goto('public');
-                    }
-                );
+    .when('/admin/actividad/nueva', {
+      templateUrl: CONST.MODULE_PATH_ADMIN +
+        'AdminActAcad/AdminActAcad.html',
+      controller: 'AdminActAcad',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
             }
+          );
         }
+      }
+    })
+
+  .when('/admin/actividad/explorar', {
+    templateUrl: CONST.MODULE_PATH_ADMIN +
+      'AdminActExplorar/AdminActExplorar.html',
+    controller: 'AdminActExplorar',
+    controllerAs: 'vm',
+    resolve: {
+      access: function(FactorySecure) {
+        FactorySecure.control('admin').then(
+          function(thing) {
+            console.log(thing);
+          },
+          function(message) {
+            FactorySecure.goto('public');
+          }
+        );
+      }
+    }
+  })
+
+  .when('/admin/actividad/explorar-historial', {
+      templateUrl: CONST.MODULE_PATH_ADMIN +
+        'AdminActExplorarHistorial/AdminActExplorarHistorial.html',
+      controller: 'AdminActExplorarHistorial',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
+    .when('/admin/actividad/ver/:id', {
+      templateUrl: CONST.MODULE_PATH_ADMIN +
+        'AdminActVer/AdminActVer.html',
+      controller: 'AdminActVer',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
+    //ADMIN LOCAL
+    .when('/admin-local/', {
+      templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+        'AdminLocalIndex/AdminLocalIndex.html',
+      controller: 'AdminLocalIndex',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin-local').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
+    .when('/admin-local/listado/charlas', {
+      templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+        'AdminLocalCharlaExplora/AdminLocalCharlaExplora.html',
+      controller: 'AdminLocalCharlaExplora',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin-local').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
     })
 
 
+  .when('/admin-local/actividad/explorar', {
+    templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+      'AdminActExplorar/AdminActExplorar.html',
+    controller: 'AdminLocalActExplorar',
+    controllerAs: 'vm',
+    resolve: {
+      access: function(FactorySecure) {
+        FactorySecure.control('admin-local').then(
+          function(thing) {
+            console.log(thing);
+          },
+          function(message) {
+            FactorySecure.goto('public');
+          }
+        );
+      }
+    }
+  })
+
+  .when('/admin-local/actividad/explorar-historial', {
+      templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+        'AdminActExplorarHistorial/AdminActExplorarHistorial.html',
+      controller: 'AdminLocalActExplorarHistorial',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin-local').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
+    .when('/admin-local/actividad/ver/:id', {
+      templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+        'AdminActVer/AdminActVer.html',
+      controller: 'AdminLocalActVer',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin-local').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
 
 
+  //CREATE charlas
+  .when('/admin-local/listado/charlas/create', {
+      templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+        'AdminLocalCharlaCreate/AdminLocalCharlaCreate.html',
+      controller: 'AdminLocalCharlaCreate',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin-local').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
+    .when('/admin-local/listado/charlas/ver/:id', {
+      templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+        'AdminLocalCharlaVer/AdminLocalCharlaVer.html',
+      controller: 'AdminLocalCharlaVer',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin-local').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
+    .when('/admin-local/listado/actidivades', {
+      templateUrl: CONST.MODULE_PATH_ADMIN_LOCAL +
+        'AdminLocalActAcadExplora/AdminLocalActAcadExplora.html',
+      controller: 'AdminLocalActAcadExplora',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control('admin-local').then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
+    //MONITOR
+    .when('/monitor/charlas/:type', {
+      templateUrl: CONST.MODULE_PATH_MONITOR +
+        'MonitorCharla/MonitorCharla.html',
+      controller: 'MonitorCharla',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control(['admin-local', 'monitor', 'admin']).then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
 
+  .when('/monitor/charlas/historial/:type', {
+    templateUrl: CONST.MODULE_PATH_MONITOR +
+      'MonitorCharlaHistorial/MonitorCharlaHistorial.html',
+    controller: 'MonitorCharlaHistorial',
+    controllerAs: 'vm',
+    resolve: {
+      access: function(FactorySecure) {
+        FactorySecure.control(['admin-local', 'monitor', 'admin']).then(
+          function(thing) {
+            console.log(thing);
+          },
+          function(message) {
+            FactorySecure.goto('public');
+          }
+        );
+      }
+    }
+  })
 
+  .when('/monitor/charlas/evaluacion/:type/:id', {
+    templateUrl: CONST.MODULE_PATH_MONITOR +
+      'MonitorEvaluacion/MonitorEvaluacion.html',
+    controller: 'MonitorEvaluacion',
+    controllerAs: 'vm',
+    resolve: {
+      access: function(FactorySecure) {
+        FactorySecure.control(['admin-local', 'monitor', 'admin']).then(
+          function(thing) {
+            console.log(thing);
+          },
+          function(message) {
+            FactorySecure.goto('public');
+          }
+        );
+      }
+    }
+  })
 
-    .otherwise({
-        redirectTo: '/public/'
-    });
+  .otherwise({
+    redirectTo: '/public/'
+  });
 
 });
 
@@ -708,46 +683,51 @@ app.directive('thumbnail', [function() {
 }]);
 */
 
-(function () {
+(function() {
   'use strict'
 
   angular
     .module('sistemaCharlas')
     .directive('modalCerrarCurso', ModalCerrarCurso);
 
-  ModalCerrarCurso.$inject = ['ServiceHTTP','$location','$timeout'];
-  function ModalCerrarCurso (ServiceHTTP,$location,$timeout) {
+  ModalCerrarCurso.$inject = ['ServiceHTTP', '$location', '$timeout'];
+
+  function ModalCerrarCurso(ServiceHTTP, $location, $timeout) {
     return {
       restrict: 'E',
       scope: {
         'curso': '@',
-        'usuarios' : '@',
+        'perfil': '@',
+        'usuarios': '@',
       },
       templateUrl: './app/directives/DirectiveModalCerrarCurso/DirectiveModalCerrarCurso.html',
-      link: function ($scope, element, attrs) {
+      link: function($scope, element, attrs) {
+        $scope.idc = 0;
+        $scope.cancelarInscripcionAction = function(idc) {
+            $('#modal-cerrar-curso').modal('hide');
 
-              $scope.cancelarInscripcionAction = function(){
-                $('#modal-cerrar-curso').modal('hide');
+            console.log($scope.idc);
 
-                var result = ServiceHTTP.delInscripcion($scope.idc);
-
-                $timeout(function () {
-                  $location.path('monitor');
-                }, 500);
-              }
-              /*
-              element.on('click', function () {
-                console.log($scope.idc);
-                  element.css('background-color', 'red');
-              });
-              element.on('mouseenter', function () {
-                  element.css('background-color', 'yellow');
-              });
-              element.on('mouseleave', function () {
-                  element.css('background-color', 'white');
-              });
-              */
+            var result = ServiceHTTP.delInscripcion(idc);
+            console.log($scope.perfil);
+            $timeout(function() {
+              console.log('monitor/' + $scope.perfil);
+              $location.path('monitor/charlas/' + $scope.perfil);
+            }, 500);
           }
+          /*
+          element.on('click', function () {
+            console.log($scope.idc);
+              element.css('background-color', 'red');
+          });
+          element.on('mouseenter', function () {
+              element.css('background-color', 'yellow');
+          });
+          element.on('mouseleave', function () {
+              element.css('background-color', 'white');
+          });
+          */
+      }
     }
   }
 
@@ -1048,27 +1028,45 @@ Array.prototype.clean = function(deleteValue) {
 };
 //Factory js
 angular
-    .module('sistemaCharlas')
-    .factory('FactorySecure', FactorySecure);
+  .module('sistemaCharlas')
+  .factory('FactorySecure', FactorySecure);
 
-function FactorySecure($q,$location,ServiceUsuario,$timeout){
-    return {
-        control: function(type){
-            var defer = $q.defer();
-            var path = $location.path().split('/').clean('');
-
-            if (ServiceUsuario.getData() != null && ServiceUsuario.getData().role != null && ServiceUsuario.getData().role == type) {
-              defer.resolve("access-success");
-            }else{
-              defer.reject("no-access-controll");
-            }
-            return defer.promise;
-
-        },
-        goto: function(path){
-          $location.path(path);
+function FactorySecure($q, $location, ServiceUsuario, $timeout) {
+  return {
+    control: function(type) {
+      var defer = $q.defer();
+      var path = $location.path().split('/').clean('');
+      console.log(path);
+      console.log(11);
+      if (angular.isArray(type)) {
+        var ingresoOK = false;
+        for (var i = 0; i < type.length; i++) {
+          if (ServiceUsuario.getData() != null && ServiceUsuario.getData().role !=
+            null && ServiceUsuario.getData().role == type[i]) {
+            ingresoOK = true;
+            break;
+          }
         }
-    };
+
+        if (ingresoOK) {
+          defer.resolve("access-success");
+        } else {
+          defer.reject("no-access-controll");
+        }
+      } else {
+        if (ServiceUsuario.getData() != null && ServiceUsuario.getData().role !=
+          null && ServiceUsuario.getData().role == type) {
+          defer.resolve("access-success");
+        } else {
+          defer.reject("no-access-controll");
+        }
+      }
+      return defer.promise;
+    },
+    goto: function(path) {
+      $location.path(path);
+    }
+  };
 };
 
 var txtCaptcha = null;
@@ -1589,53 +1587,6 @@ function AdminActExplorar(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,Ser
 angular.module('sistemaCharlas')
   .controller('AdminActExplorar',AdminActExplorar);
 
-AdminActExplorarHistorial.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
-
-function AdminActExplorarHistorial(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, ServiceHelpers) {
-
-    var vm = this;
-    vm.data = {};
-    vm.data.actividades = {};
-
-    vm.goto = goto;
-
-    function goto(url, id) {
-        $location.path(url + '/' + id);
-    }
-
-    vm.minutosAHoras = function(minutos) {
-        return ServiceHelpers.minutosAHoras(minutos);
-    }
-
-    function initView() {
-
-        function resultOK(data) {
-            FactoryLoader.desactivar();
-            vm.data.actividades = data.data;
-            console.log(vm.data.actividades, data);
-        }
-
-        function resultNOK(err) {
-            FactoryLoader.desactivar();
-            console.log(err);
-        }
-        ServiceHTTP.getAllActividadesHistoricas(2, 'Cargando listado de actividades...')
-            .success(function(data) {
-                resultOK(data);
-            })
-            .error(function(err) {
-                resultNOK(err);
-            });
-
-    }
-    initView();
-
-
-}
-
-angular.module('sistemaCharlas')
-  .controller('AdminActExplorarHistorial',AdminActExplorarHistorial);
-
 AdminActVer.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers','$routeParams','$scope'];
 
 function AdminActVer(ServiceUsuario, $location, ServiceHTTP, ServiceHelpers,$routeParams,$scope) {
@@ -1703,6 +1654,53 @@ function AdminActVer(ServiceUsuario, $location, ServiceHTTP, ServiceHelpers,$rou
 
 angular.module('sistemaCharlas')
   .controller('AdminActVer',AdminActVer);
+
+AdminActExplorarHistorial.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
+
+function AdminActExplorarHistorial(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, ServiceHelpers) {
+
+    var vm = this;
+    vm.data = {};
+    vm.data.actividades = {};
+
+    vm.goto = goto;
+
+    function goto(url, id) {
+        $location.path(url + '/' + id);
+    }
+
+    vm.minutosAHoras = function(minutos) {
+        return ServiceHelpers.minutosAHoras(minutos);
+    }
+
+    function initView() {
+
+        function resultOK(data) {
+            FactoryLoader.desactivar();
+            vm.data.actividades = data.data;
+            console.log(vm.data.actividades, data);
+        }
+
+        function resultNOK(err) {
+            FactoryLoader.desactivar();
+            console.log(err);
+        }
+        ServiceHTTP.getAllActividadesHistoricas(2, 'Cargando listado de actividades...')
+            .success(function(data) {
+                resultOK(data);
+            })
+            .error(function(err) {
+                resultNOK(err);
+            });
+
+    }
+    initView();
+
+
+}
+
+angular.module('sistemaCharlas')
+  .controller('AdminActExplorarHistorial',AdminActExplorarHistorial);
 
 AdminIndex.$inject = ['ServiceUsuario'];
 function AdminIndex(ServiceUsuario){
@@ -2086,154 +2084,70 @@ function AdminLocalIndex(ServiceUsuario){
 angular.module('sistemaCharlas')
   .controller('AdminLocalIndex',AdminLocalIndex);
 
-CodigoConfirmacionMonitor.$inject = ['ServiceStore', 'FactorySearchCharla', '$routeParams', '$location', 'FactoryLoader'];
+CodigoConfirmacionMonitor.$inject = ['ServiceStore', 'FactorySearchCharla',
+  '$routeParams', '$location', 'FactoryLoader'
+];
 
-function CodigoConfirmacionMonitor(ServiceStore, FactorySearchCharla, $routeParams, $location, FactoryLoader) {
-    var vm = this
-    vm.data = {};
-    vm.param = {};
-    vm.param.id = $routeParams.id;
-    vm.param.dr = $routeParams.dr;
-    vm.param.call = $routeParams.call;
-
-    vm.data.charla = ServiceStore.getUltimaCharlaInscrita();
-    console.log(vm.data.charla);
-    console.log(vm.data.charla);
-    vm.volver = volver;
-
-
-    if (vm.param.call == 'listado') {
-      vm.volver.texto = 'Volver a listado de charlas';
-      vm.urlAnteriorPortal = '/#/public/';
-      vm.urlAnterior = "/#/public/charlas/listado/" + vm.param.dr;
-      vm.textoUrlAnterior = "Charlas"
-    }else{
-      vm.volver.texto = 'Volver a Formulario de charla';
-      vm.urlAnteriorPortal = '/#/monitor/';
-      vm.urlAnterior = "/#/monitor/charlas/evaluacion/" + vm.param.dr;
-      vm.textoUrlAnterior = "Formulario de Charla"
-    }
-
-
-    function volver(id) {
-        vm.volver = {};
-        if (vm.param.call == 'listado') {
-            $location.path('public/charlas/listado/' + vm.param.dr);
-        } else {
-            $location.path('monitor/charlas/evaluacion/' + vm.param.dr);
-        }
-
-    };
-
-}
-
-angular.module("sistemaCharlas")
-  .controller("CodigoConfirmacionMonitor",CodigoConfirmacionMonitor);
-
-FormularioInscripcionMonitor.$inject = ['$scope','ServiceUsuario','ServiceStore','ServiceHTTP','$routeParams','$filter','$location','FactoryLoader'];
-function FormularioInscripcionMonitor($scope,ServiceUsuario,ServiceStore,ServiceHTTP,$routeParams,$filter,$location,FactoryLoader){
-
-  var vm = this;
+function CodigoConfirmacionMonitor(ServiceStore, FactorySearchCharla,
+  $routeParams, $location, FactoryLoader) {
+  var vm = this
   vm.data = {};
-
   vm.param = {};
   vm.param.id = $routeParams.id;
   vm.param.dr = $routeParams.dr;
   vm.param.call = $routeParams.call;
-  vm.data.charla = {};
-  vm.data.charla.fechaFormat;
-  vm.data.charla.horaFormat;
-  vm.data.charla.horaFinFormat
 
-    vm.urlAnteriorPortal = '/#/monitor/';
-    vm.urlAnterior = "/#/monitor/charlas/evaluacion/" + vm.param.dr;
-    vm.textoUrlAnterior = "Formulario de Charla"
+  vm.data.charla = ServiceStore.getUltimaCharlaInscrita();
+  console.log(vm.data.charla);
+  console.log(vm.data.charla);
+  vm.volver = volver;
+
+  function volver(id) {
+    vm.volver = {};
 
 
-  vm.newCharla = {
-    nombre : '',
-    apellido : '',
-    email : '',
-    fechaNacimiento : '',
-    comuna : ''
   };
 
-  vm.callCharla = callCharla;
-  function callCharla(dr,id){
-      ServiceHTTP.getCharlaPorId(dr,id,'Cargando...').then(function(data){
-        FactoryLoader.desactivar();
-        vm.data.charla = data.data.data;
-      },function(err){
-        console.log(err);
-      });
-     //vm.data.charla = ServiceHTTP.getCharlaPorId(id);
-     vm.data.charla.fechaFormat = $filter('date')(vm.data.charla.fecha, "fullDate");
-     vm.data.charla.horaFormat = $filter('date')(vm.data.charla.fecha, "shortTime");
-     vm.data.charla.horaFinFormat = $filter('date')(vm.data.charla.fechaFin, "shortTime");
-  }
-
-  vm.gotoRegistrar = gotoRegistrar;
-  function gotoRegistrar(){
-    if ($scope.FormNuevaCharla.$valid) {
-
-      //Copiar la data de la charla en el envio
-      vm.newCharla.data = vm.data.charla;
-
-      ServiceHTTP.aceptarInscripcionCharla(vm.newCharla , "Registrando...").then(function(data){
-        FactoryLoader.desactivar();
-        console.log(data);
-        ServiceStore.setUltimaCharlaInscrita(data.data.data);
-        $location.path('monitor/detalle-inscripcion/' + vm.param.call + '/' + vm.param.dr + '/' + vm.param.id);
-      });
-
-    }else{
-      console.log('Error debe completar todos los campos');
-    }
-
-
-  }
-  vm.cancelarInscripcion = cancelarInscripcion;
-  function cancelarInscripcion(id){
-    ServiceStore.deleteUltimaCharlaInscrita(id);
-    $location.path('public/charlas/listado/' + vm.param.dr);
-  }
-
-  vm.callCharla(vm.param.dr,vm.param.id);
 }
 
-angular.module('sistemaCharlas')
-  .controller('FormularioInscripcionMonitor',FormularioInscripcionMonitor);
+MonitorCharla.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP',
+  'FactoryLoader', '$routeParams'
+];
 
-MonitorCharla.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader'];
-function MonitorCharla(ServiceUsuario,$location,ServiceHTTP,FactoryLoader){
+function MonitorCharla(ServiceUsuario, $location, ServiceHTTP, FactoryLoader,
+  $routeParams) {
 
   var vm = this;
-      vm.data = {};
-      vm.data.charlas = {};
+
+  vm.type = $routeParams.type;
+  vm.data = {};
+  vm.data.charlas = {};
 
   vm.goto = goto;
-  function goto(url,id){
-    $location.path('monitor/charlas/' + url + '/' + id);
+
+  function goto(url, id) {
+    $location.path('monitor/charlas/' + url + "/" + vm.type + '/' + id);
   }
 
 
-  function initView(){
+  function initView() {
 
-    function resultOK(data){
+    function resultOK(data) {
       FactoryLoader.desactivar();
       vm.data.charlas = data.data;
-      console.log(vm.data.charlas,data);
+      console.log(vm.data.charlas, data);
     }
-    function resultNOK(err){
+
+    function resultNOK(err) {
       FactoryLoader.desactivar();
       console.log(err);
     }
-    ServiceHTTP.getCharlasPorMonitorId(2,'Cargando listado de charlas...')
+    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de charlas...')
       .success(function(data) {
-          resultOK(data);
+        resultOK(data);
       })
       .error(function(err) {
-          resultNOK(err);
+        resultNOK(err);
       });
 
   }
@@ -2245,36 +2159,42 @@ function MonitorCharla(ServiceUsuario,$location,ServiceHTTP,FactoryLoader){
 angular.module('sistemaCharlas')
   .controller('MonitorCharla',MonitorCharla);
 
-MonitorCharlaHistorial.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader'];
-function MonitorCharlaHistorial(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,ServiceHelpers){
+MonitorCharlaHistorial.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP',
+  'FactoryLoader', '$routeParams'
+];
+
+function MonitorCharlaHistorial(ServiceUsuario, $location, ServiceHTTP,
+  FactoryLoader, $routeParams) {
 
   var vm = this;
-      vm.data = {};
-      vm.data.charlas = {};
-
+  vm.data = {};
+  vm.data.charlas = {};
+  vm.type = $routeParams.type;
   vm.goto = goto;
-  function goto(url,id){
-    $location.path('monitor/charlas/' + url + '/' + id);
+
+  function goto(url, id) {
+    $location.path('monitor/charlas/' + url + "/" + vm.type + '/' + id);
   }
+  console.log(1237912349127346128473);
 
+  function initView() {
 
-  function initView(){
-
-    function resultOK(data){
+    function resultOK(data) {
       FactoryLoader.desactivar();
       vm.data.charlas = data.data;
-      console.log(vm.data.charlas,data);
+      console.log(vm.data.charlas, data);
     }
-    function resultNOK(err){
+
+    function resultNOK(err) {
       FactoryLoader.desactivar();
       console.log(err);
     }
-    ServiceHTTP.getCharlasPorMonitorId(2,'Cargando listado de charlas...')
+    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de charlas...')
       .success(function(data) {
-          resultOK(data);
+        resultOK(data);
       })
       .error(function(err) {
-          resultNOK(err);
+        resultNOK(err);
       });
 
   }
@@ -2286,103 +2206,112 @@ function MonitorCharlaHistorial(ServiceUsuario,$location,ServiceHTTP,FactoryLoad
 angular.module('sistemaCharlas')
   .controller('MonitorCharlaHistorial',MonitorCharlaHistorial);
 
-MonitorEvaluacion.$inject = ['$scope','ServiceUsuario', 'ServiceHTTP', 'FactoryLoader','$location'];
+MonitorEvaluacion.$inject = ['$scope', 'ServiceUsuario', 'ServiceHTTP',
+  'FactoryLoader', '$location', '$routeParams'
+];
 
-function MonitorEvaluacion($scope,ServiceUsuario, ServiceHTTP, FactoryLoader, $location) {
-    console.log(ServiceUsuario.getData());
+function MonitorEvaluacion($scope, ServiceUsuario, ServiceHTTP, FactoryLoader,
+  $location, $routeParams) {
+  console.log(ServiceUsuario.getData());
 
-    var vm = this;
-    vm.data = {};
-    vm.data.charla = {};
-    vm.data.usuarios = [];
-          vm.arr = [];
+  var vm = this;
 
-    vm.agregarParticipante = agregarParticipante;
-    function agregarParticipante() {
-      $location.path('monitor/formulario-de-inscripcion/evaluacion/1/1');
+  vm.type = $routeParams.type;
+  vm.data = {};
+  vm.data.charla = {};
+  vm.data.usuarios = [];
+  vm.arr = [];
+
+  vm.agregarParticipante = agregarParticipante;
+
+  function agregarParticipante() {
+    $location.path('monitor/formulario-de-inscripcion/evaluacion/1/1');
+  }
+
+  function initView() {
+    function resultOK(data) {
+      FactoryLoader.desactivar();
+      console.log(data.data);
+      vm.data.charla = data.data.identificacion;
+      vm.data.usuarios = data.data.listado;
+      angular.copy(vm.data.usuarios, vm.arr)
     }
 
-    function initView() {
-        function resultOK(data) {
-            FactoryLoader.desactivar();
-            console.log(data.data);
-            vm.data.charla = data.data.identificacion;
-            vm.data.usuarios = data.data.listado;
-            angular.copy(vm.data.usuarios,vm.arr)
-        }
-
-        function resultNOK(err) {
-            FactoryLoader.desactivar();
-            $scope.isErrorBuscar = true;
-        }
-        ServiceHTTP.getCharlaMonitorPorId(2, 'Cargando...')
-            .success(function(data) {
-                if (data.data != -1)
-                    resultOK(data);
-                else
-                    resultNOK(data);
-            })
-            .error(function(err) {
-                resultNOK(err);
-            });
+    function resultNOK(err) {
+      FactoryLoader.desactivar();
+      $scope.isErrorBuscar = true;
     }
+    ServiceHTTP.getCharlaMonitorPorId(2, 'Cargando...')
+      .success(function(data) {
+        if (data.data != -1)
+          resultOK(data);
+        else
+          resultNOK(data);
+      })
+      .error(function(err) {
+        resultNOK(err);
+      });
+  }
 
-    initView();
+  initView();
 
-    vm.cerrarCharla = cerrarCharla;
+  vm.cerrarCharla = cerrarCharla;
 
-    function cerrarCharla() {
-        console.log(vm.data.usuarios);
-    }
+  function cerrarCharla() {
+    console.log(vm.data.usuarios);
+  }
 
-    vm.searchInput = '';
-    vm.getUsuarios = function(){
-        vm.searchInput += '';
-        vm.arr = [];
-        //angular.copy(vm.data.usuarios,arr)
-        if (vm.searchInput.length > 0) {
-            for (var i = 0; i < vm.data.usuarios.length; i++) {
-                if (
-                  vm.data.usuarios[i].nombre.toLowerCase().indexOf(vm.searchInput.toLowerCase()) != -1 ||
-                  vm.data.usuarios[i].rut.toLowerCase().indexOf(vm.searchInput.toLowerCase()) != -1 ||
-                  vm.data.usuarios[i].codigo.toLowerCase().indexOf(vm.searchInput.toLowerCase()) != -1) {
-                    vm.arr.push(vm.data.usuarios[i])
-                }
-            }
-            //angular.copy(vm.arr,vm.data.usuarios)
-            return true;
+  vm.searchInput = '';
+  vm.getUsuarios = function() {
+      vm.searchInput += '';
+      vm.arr = [];
+      //angular.copy(vm.data.usuarios,arr)
+      if (vm.searchInput.length > 0) {
+        for (var i = 0; i < vm.data.usuarios.length; i++) {
+          if (
+            vm.data.usuarios[i].nombre.toLowerCase().indexOf(vm.searchInput.toLowerCase()) !=
+            -1 ||
+            vm.data.usuarios[i].rut.toLowerCase().indexOf(vm.searchInput.toLowerCase()) !=
+            -1 ||
+            vm.data.usuarios[i].codigo.toLowerCase().indexOf(vm.searchInput.toLowerCase()) !=
+            -1) {
+            vm.arr.push(vm.data.usuarios[i])
           }
-          angular.copy(vm.data.usuarios,vm.arr)
+        }
+        //angular.copy(vm.arr,vm.data.usuarios)
+        return true;
+      }
+      angular.copy(vm.data.usuarios, vm.arr)
 
     }
     //vm.getUsuarios();
 
 
-    vm.disableButton = true;
-    setTimeout(function () {
-      $scope.$watch('vm.data.usuarios', function(newValue, oldValue){
+  vm.disableButton = true;
+  setTimeout(function() {
+    $scope.$watch('vm.data.usuarios', function(newValue, oldValue) {
 
-        if (newValue != oldValue) {
-          console.log(1);
-          vm.disableButton = false;
-        }else {
-          2
-        }
+      if (newValue != oldValue) {
+        console.log(1);
+        vm.disableButton = false;
+      } else {
+        2
+      }
 
-      }, true);
-    }, 500);
+    }, true);
+  }, 500);
 
 }
 
 
 
-function arrayObjectIndexOf(arr, obj){
-    for(var i = 0; i < arr.length; i++){
-        if(angular.equals(arr[i], obj)){
-            return i;
-        }
-    };
-    return -1;
+function arrayObjectIndexOf(arr, obj) {
+  for (var i = 0; i < arr.length; i++) {
+    if (angular.equals(arr[i], obj)) {
+      return i;
+    }
+  };
+  return -1;
 }
 
 angular.module('sistemaCharlas')

@@ -3,7 +3,8 @@
   <div class="container">
     <ol class="breadcrumb">
       <li><a href="/#/">Home</a></li>
-      <li class="active">Portal</li>
+      <li><a href="/#/{{vm.type}}">Portal</a></li>
+      <li class="active">Listado Actividades Asignadas</li>
     </ol>
 
       <div>
@@ -15,7 +16,7 @@
 
         <div class="sistema-charlas-tab-header">
           <p class="sistema-charlas-tab-header-btn">Actividades Asignadas Activas</p>
-          <a href="/#/monitor/historial" class="sistema-charlas-tab-header-btn">Actividades Asignadas Historicas</a>
+          <a href="/#/monitor/charlas/historial/{{vm.type}}" class="sistema-charlas-tab-header-btn">Actividades Asignadas Historicas</a>
         </div>
         <!-- <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum autem nesciunt doloribus saepe optio iure exercitationem ut velit, aut voluptatem quibusdam in est modi vitae dolore illum temporibus. Earum, nam!

@@ -6,8 +6,9 @@
                 <a href="/#/">Home</a>
             </li>
             <li>
-                <a href="/#/monitor">Portal</a>
+                <a href="/#/{{vm.type}}">Portal</a>
             </li>
+              <li><a href="/#/monitor/charlas/{{vm.type}}">Listado Actividades Asignadas</a></li>
             <li class="active">Formulario de Actividad</li>
         </ol>
 
@@ -23,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="sistema-charlas-bloque bloque-gris bloque-spacer sistema-charlas-table-vertical" ng-if="vm.data.charla.tema">
-                            <h3 class="bloque-title">Identificación de charla:
+                            <h3 class="bloque-title">Identificación de Actividad:
                                 {{vm.data.charla.tema}}</h3>
                             <div class="row">
                                 <div class="col-md-3 text-right">TEMA:</div>
@@ -112,7 +113,7 @@
                                 <button class="btn btn-default" ng-disabled="vm.disableButton">
                                     <i class="fa fa-floppy-o" aria-hidden="true"></i>
                                     Guardar asistencia</button>
-                                <modal-cerrar-curso class="sistema-charlas-button-modal" usuarios="vm.data.usuarios" charla="vm.data.charla"></modal-cerrar-charla>
+                                <modal-cerrar-curso class="sistema-charlas-button-modal" usuarios="{{vm.data.usuarios}}" charla="{{vm.data.charla}}" perfil="{{vm.type}}"></modal-cerrar-charla>
                             </td>
                         </tr>
                     </table>
