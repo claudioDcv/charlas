@@ -37,21 +37,7 @@
                             <input type="text" ng-maxlength="100" ng-minlength="0" minlength="0" maxlength="100" ng-model="vm.data.charla.direccion" class="form-control" placeholder="Dirección" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">ESTADO</label>
-                        <div class="col-sm-10">
 
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="1">activo
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="2">suspendido
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio" ng-model="vm.data.charla.estado" ng-value="3">cancelado
-                            </label>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">DR</label>
                         <div class="col-sm-10">
@@ -91,6 +77,9 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid"> Guardar
+                            </button>
+
+                            <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid"> Suspender y Notificar
                             </button>
                         </div>
                     </div>
