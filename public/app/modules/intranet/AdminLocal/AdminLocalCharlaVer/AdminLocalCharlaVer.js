@@ -15,7 +15,7 @@ function AdminLocalCharlaVer(ServiceUsuario,FactoryData){
 
 
       vm.data.charla = {actividadSelect : 2,
-      actividadSelectHumanText : "Actividad: Como declarar IVA",
+      actividadSelectHumanText : "Actividad: Como declarar IVA | 15Hrs",
       comuna : "8413",
       cupos : 10,
       direccion : "Avenida Siempre Viva #3345",

@@ -14,10 +14,10 @@ function AdminLocalCharlaCreate(ServiceUsuario,FactoryData){
       vm.dr = FactoryData.getDr();
 
 
-  vm.selectAct = function(id,titulo){
+  vm.selectAct = function(id,titulo,hrs){
     vm.data.charla.actividadSelect = id;
 
-    vm.data.charla.actividadSelectHumanText = 'Actividad: ' + titulo;
+    vm.data.charla.actividadSelectHumanText = 'Actividad: ' + titulo + " | " + hrs + " Hrs";
     console.log(id);
     $('#selecion-actividad').modal('hide');
 
