@@ -18,5 +18,6 @@ function Index(ServiceUsuario,$location,FactoryLoader){
   function login(type){
     vm.createUsuario(type);
     $location.path(type);
+    console.log(type);
   }
 }

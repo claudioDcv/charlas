@@ -311,6 +311,24 @@ angular.module('sistemaCharlas')
       }
     })
     //MONITOR
+    .when('/monitor', {
+      templateUrl: CONST.MODULE_PATH_MONITOR +
+        'MonitorIndex/MonitorIndex.html',
+      controller: 'MonitorIndex',
+      controllerAs: 'vm',
+      resolve: {
+        access: function(FactorySecure) {
+          FactorySecure.control(['admin-local', 'monitor', 'admin']).then(
+            function(thing) {
+              console.log(thing);
+            },
+            function(message) {
+              FactorySecure.goto('public');
+            }
+          );
+        }
+      }
+    })
     .when('/monitor/charlas/:type', {
       templateUrl: CONST.MODULE_PATH_MONITOR +
         'MonitorCharla/MonitorCharla.html',

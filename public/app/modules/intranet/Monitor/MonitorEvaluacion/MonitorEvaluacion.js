@@ -9,11 +9,19 @@ function MonitorEvaluacion($scope, ServiceUsuario, ServiceHTTP, FactoryLoader,
   var vm = this;
 
   vm.type = $routeParams.type;
+  vm.id = $routeParams.id;
   vm.data = {};
   vm.data.charla = {};
   vm.data.usuarios = [];
   vm.arr = [];
   vm.agregarParticipante = agregarParticipante;
+
+  vm.isHistorial;
+  if (vm.id == "1") {
+    vm.isHistorial = true;
+  }else {
+    vm.isHistorial = false;
+  }
 
   function agregarParticipante() {
     $location.path('monitor/formulario-de-inscripcion/evaluacion/1/1');

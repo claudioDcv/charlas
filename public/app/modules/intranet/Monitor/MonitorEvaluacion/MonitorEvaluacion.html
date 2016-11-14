@@ -27,27 +27,27 @@
                             <h3 class="bloque-title">Identificación de Actividad:
                                 {{vm.data.charla.tema}}</h3>
                             <div class="row">
-                                <div class="col-md-3 text-right">TEMA:</div>
+                                <div class="col-md-3 text-right">Tema:</div>
                                 <div class="col-md-9">{{vm.data.charla.tema}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 text-right">DIRECCIÓN REGIONAL:</div>
+                                <div class="col-md-3 text-right">Dirección Regional:</div>
                                 <div class="col-md-9">{{vm.data.charla.dr}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 text-right">DIRECCIÓN:</div>
+                                <div class="col-md-3 text-right">Dirección:</div>
                                 <div class="col-md-9">{{vm.data.charla.direccion}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 text-right">FECHA:</div>
+                                <div class="col-md-3 text-right">Fecha:</div>
                                 <div class="col-md-9">{{vm.data.charla.fecha | date:'fullDate'}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 text-right">RUT MONITOR:</div>
+                                <div class="col-md-3 text-right">Rut Funcionario:</div>
                                 <div class="col-md-9">{{vm.data.charla.rut}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 text-right">NOMBRE MONITOR:</div>
+                                <div class="col-md-3 text-right">Nombre Funcionario:</div>
                                 <div class="col-md-9">{{vm.data.charla.nombre}}</div>
                             </div>
                             <div class="row">
@@ -97,17 +97,17 @@
                                 <td>{{item.codigo}}</td>
                                 <td>
                                   <div class="sistema-charlas-check-container">
-                                    <input type="checkbox" ng-model="item.asistio" ng-click="vm.disableButton = false">
+                                    <input type="checkbox" ng-model="item.asistio" ng-click="vm.disableButton = false" ng-disabled="!vm.isHistorial">
                                     <label class="checkbox-inline">{{item.asistio?'Si':'No'}}</label>
                                   </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr ng-if="vm.isHistorial" >
                               <td colspan="3">
 
                               </td>
                               <td>
-                                <agregar-usuario data="vm.data.charla" lista="vm.data.usuarios"></agregar-usuario>
+                                <agregar-usuariodata="vm.data.charla" lista="vm.data.usuarios"></agregar-usuario>
                               </td>
                             </tr>
                         </tbody>
@@ -115,10 +115,10 @@
                     <table>
                         <tr>
                             <td>
-                                <button class="btn btn-default" ng-disabled="vm.disableButton">
+                                <button ng-if="vm.isHistorial" class="btn btn-default" ng-disabled="vm.disableButton">
                                     <i class="fa fa-floppy-o" aria-hidden="true"></i>
                                     Guardar asistencia</button>
-                                <modal-cerrar-curso class="sistema-charlas-button-modal" usuarios="{{vm.data.usuarios}}" charla="{{vm.data.charla}}" perfil="{{vm.type}}"></modal-cerrar-charla>
+                                <modal-cerrar-curso ng-if="vm.isHistorial" class="sistema-charlas-button-modal" usuarios="{{vm.data.usuarios}}" charla="{{vm.data.charla}}" perfil="{{vm.type}}"></modal-cerrar-charla>
                             </td>
                         </tr>
                     </table>
