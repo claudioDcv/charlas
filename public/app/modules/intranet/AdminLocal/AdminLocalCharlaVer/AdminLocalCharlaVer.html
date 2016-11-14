@@ -79,11 +79,18 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid"> Guardar
+                            <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="vm.desactiveButton" ng-if="!vm.saveAndNotify" ng-disabled="FormNuevaCharla.$invalid"> Guardar
+                            </button>
+
+                            <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="vm.desactiveButton" ng-if="vm.saveAndNotify"> Guardar y notificar
                             </button>
 
                             <button class="btn btn-default" ng-click="vm.gotoRegistrar()" ng-disabled="FormNuevaCharla.$invalid" data-toggle="modal" data-target="#modal-suspender-charla"> Suspender y Notificar
                             </button>
+
+                            <button class="btn btn-default" ng-click="vm.gotoRegistrar()" > Cancelar
+                            </button>
+
                         </div>
                     </div>
                 </form>
