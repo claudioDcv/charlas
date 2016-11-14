@@ -41,12 +41,44 @@
                     </div>
 
                     <div class="form-group">
-                                <label class="col-sm-2 control-label">Horario</label>
-                                <div class="col-sm-10">
-                                    <textarea name="name" rows="8" cols="40" class="form-control"></textarea>
-                                </div>
-                            </div>
-                            
+                        <label class="col-sm-2 control-label">Horario</label>
+                        <div class="col-sm-10">
+                            <table class="table table-striped">
+                              <tr>
+                                <th>
+                                  Dia
+                                </th>
+                                <th>
+                                  Hora inicio
+                                <th>
+                                  Hora Termino
+                                </th>
+                                <th>
+
+                                </th>
+                              </tr>
+                              <tr ng-repeat="item in vm.horario">
+                                <td>
+                                  <input type="text" class="form-control" required datetimepicker datetimepicker-options="{{vm.optionDia}}" ng-change="vm.listen()" placeholder="DD/MM/AAAA" ng-model="item.dia">
+                                </td>
+                                <td>
+                                  <input type="text"  class="form-control" datetimepicker ng-model="item.inicio" name="name" value="" datetimepicker-options="{{vm.optionHora}}">
+                                </td>
+                                <td>
+                                  <input type="text"  class="form-control" datetimepicker ng-model="item.fin" name="name" value="" datetimepicker-options="{{vm.optionHora}}">
+                                <td>
+                                  <button type="button" name="button" class="btn btn-danger" ng-click="vm.horario.splice($index,1)">Quitar</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                  <button type="button" name="button" class="btn btn-success" ng-click="vm.addDay()">Agregar dia</button>
+                                </th>
+                              </tr>
+                            </table>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Cupos</label>
                         <div class="col-sm-10">

@@ -22,10 +22,10 @@ function FormularioInscripcion($scope, ServiceUsuario, ServiceStore, ServiceHTTP
 
       return {
           icons:{
-            next:'glyphicon glyphicon-arrow-right',
-            previous:'glyphicon glyphicon-arrow-left',
-            up:'glyphicon glyphicon-arrow-up',
-            down:'glyphicon glyphicon-arrow-down'
+            next:'fa fa-angle-right',
+            previous:'fa fa-angle-left',
+            up:'fa fa-angle-up',
+            down:'fa fa-angle-down'
           },
           viewMode: 'years',
           format: 'DD/MM/YYYY'

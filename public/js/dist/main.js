@@ -1535,6 +1535,51 @@ function AdminAct(ServiceUsuario, $location, ServiceHTTP, FactoryLoader) {
 angular.module('sistemaCharlas')
   .controller('AdminAct',AdminAct);
 
+AdminActExplorar.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader','ServiceHelpers'];
+function AdminActExplorar(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,ServiceHelpers){
+      var vm = this;
+      vm.data = {};
+      vm.data.actividades = {};
+
+      vm.goto = goto;
+
+      function goto(url, id) {
+          $location.path(url + '/' + id);
+      }
+
+      vm.minutosAHoras = function(minutos) {
+          return ServiceHelpers.minutosAHoras(minutos);
+      }
+
+      function initView() {
+
+          function resultOK(data) {
+              FactoryLoader.desactivar();
+              vm.data.actividades = data.data;
+              console.log(vm.data.actividades, data);
+          }
+
+          function resultNOK(err) {
+              FactoryLoader.desactivar();
+              console.log(err);
+          }
+          ServiceHTTP.getAllActividadesHistoricas(2, 'Cargando listado de actividades...')
+              .success(function(data) {
+                  resultOK(data);
+              })
+              .error(function(err) {
+                  resultNOK(err);
+              });
+
+      }
+      initView();
+
+
+  }
+
+angular.module('sistemaCharlas')
+  .controller('AdminActExplorar',AdminActExplorar);
+
 AdminActAcad.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
 
 function AdminActAcad(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, ServiceHelpers) {
@@ -1611,51 +1656,6 @@ function AdminActExplorarHistorial(ServiceUsuario, $location, ServiceHTTP, Facto
 
 angular.module('sistemaCharlas')
   .controller('AdminActExplorarHistorial',AdminActExplorarHistorial);
-
-AdminActExplorar.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader','ServiceHelpers'];
-function AdminActExplorar(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,ServiceHelpers){
-      var vm = this;
-      vm.data = {};
-      vm.data.actividades = {};
-
-      vm.goto = goto;
-
-      function goto(url, id) {
-          $location.path(url + '/' + id);
-      }
-
-      vm.minutosAHoras = function(minutos) {
-          return ServiceHelpers.minutosAHoras(minutos);
-      }
-
-      function initView() {
-
-          function resultOK(data) {
-              FactoryLoader.desactivar();
-              vm.data.actividades = data.data;
-              console.log(vm.data.actividades, data);
-          }
-
-          function resultNOK(err) {
-              FactoryLoader.desactivar();
-              console.log(err);
-          }
-          ServiceHTTP.getAllActividadesHistoricas(2, 'Cargando listado de actividades...')
-              .success(function(data) {
-                  resultOK(data);
-              })
-              .error(function(err) {
-                  resultNOK(err);
-              });
-
-      }
-      initView();
-
-
-  }
-
-angular.module('sistemaCharlas')
-  .controller('AdminActExplorar',AdminActExplorar);
 
 AdminActVer.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers','$routeParams','$scope'];
 
@@ -1741,10 +1741,10 @@ function AdminIndex(ServiceUsuario){
   }
   vm.optFechaInforme = {
               icons:{
-                next:'glyphicon glyphicon-arrow-right',
-                previous:'glyphicon glyphicon-arrow-left',
-                up:'glyphicon glyphicon-arrow-up',
-                down:'glyphicon glyphicon-arrow-down',
+                next:'fa fa-angle-right',
+                previous:'fa fa-angle-left',
+                up:'fa fa-angle-up',
+                down:'fa fa-angle-down',
               },
               format: 'MM/YYYY',
               viewMode: 'years'
@@ -1924,6 +1924,39 @@ function AdminLocalActAcadVer(ServiceUsuario){
 angular.module('sistemaCharlas')
   .controller('AdminLocalActAcadVer',AdminLocalActAcadVer);
 
+angular.module('sistemaCharlas')
+.directive('ngHora', function() {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function($scope, $element, $attrs, ngModel) {
+      function clean(_value) {
+        return typeof _value === 'string' ? _value.replace(/[^0-9]+/g,'') : '';
+      }
+
+      function format(_value){
+        _value = clean(_value)
+
+        if(!_value) return "";
+        if(_value.length <= 1) return _value;
+
+        var result = _value.slice(-4,-2) + ':' + _value.substr(_value.length-2);
+        return result;
+      }
+
+      $scope.$watch(function() {
+        return ngModel.$viewValue;
+      }, function() {
+        ngModel.$setViewValue(format(ngModel.$viewValue));
+        ngModel.$render();
+        console.log(ngModel);
+      });
+
+    }
+  };
+});
+
+
 AdminLocalCharlaCreate.$inject = ['ServiceUsuario','FactoryData'];
 function AdminLocalCharlaCreate(ServiceUsuario,FactoryData){
   console.log(ServiceUsuario.getData());
@@ -1963,10 +1996,10 @@ function AdminLocalCharlaCreate(ServiceUsuario,FactoryData){
   };
   vm.optFechaInicio = {
               icons:{
-                next:'glyphicon glyphicon-arrow-right',
-                previous:'glyphicon glyphicon-arrow-left',
-                up:'glyphicon glyphicon-arrow-up',
-                down:'glyphicon glyphicon-arrow-down',
+                next:'fa fa-angle-right',
+                previous:'fa fa-angle-left',
+                up:'fa fa-angle-up',
+                down:'fa fa-angle-down',
               },
               format: 'DD/MM/YYYY',
               minDate : vm.data.charla.fechaInicio
@@ -1974,10 +2007,10 @@ function AdminLocalCharlaCreate(ServiceUsuario,FactoryData){
 
   vm.optFechaFin =  {
               icons:{
-                next:'glyphicon glyphicon-arrow-right',
-                previous:'glyphicon glyphicon-arrow-left',
-                up:'glyphicon glyphicon-arrow-up',
-                down:'glyphicon glyphicon-arrow-down',
+                next:'fa fa-angle-right',
+                previous:'fa fa-angle-left',
+                up:'fa fa-angle-up',
+                down:'fa fa-angle-down',
               },
               format: 'DD/MM/YYYY',
               minDate : vm.data.charla.fechaInicio
@@ -1989,10 +2022,74 @@ function AdminLocalCharlaCreate(ServiceUsuario,FactoryData){
 
   }
 
+  vm.addDay = function(){
+    vm.horario.push({"inicio":"00:00","fin":"00:00","dia":""});
+  }
+
+  vm.optionDia = {
+              icons:{
+                next:'fa fa-angle-right',
+                previous:'fa fa-angle-left',
+                up:'fa fa-angle-up',
+                down:'fa fa-angle-down',
+              },
+              format: 'DD/MM/YYYY'
+            };
+  vm.optionHora = {
+              icons:{
+                next:'fa fa-angle-right',
+                previous:'fa fa-angle-left',
+                up:'fa fa-angle-up',
+                down:'fa fa-angle-down',
+              },
+              format: 'LT'
+            };
+
+
+  //horario version compleja
+  vm.horario= JSON.parse('[]');
+
 }
 
 angular.module('sistemaCharlas')
   .controller('AdminLocalCharlaCreate',AdminLocalCharlaCreate);
+
+AdminLocalCharlaExplora.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader'];
+function AdminLocalCharlaExplora(ServiceUsuario,$location,ServiceHTTP,FactoryLoader){
+  var vm = this;
+      vm.data = {};
+      vm.data.charlas = {};
+
+  vm.goto = goto;
+  function goto(url,id){
+    $location.path('admin-local/listado/charlas/ver/'+ id);
+  }
+
+  function initView(){
+
+    function resultOK(data){
+      FactoryLoader.desactivar();
+      vm.data.charlas = data.data;
+      console.log(vm.data.charlas,data);
+    }
+    function resultNOK(err){
+      FactoryLoader.desactivar();
+      console.log(err);
+    }
+    ServiceHTTP.getCharlasPorMonitorId(2,'Cargando listado de actividades...')
+      .success(function(data) {
+          resultOK(data);
+      })
+      .error(function(err) {
+          resultNOK(err);
+      });
+
+  }
+  initView();
+}
+
+angular.module('sistemaCharlas')
+  .controller('AdminLocalCharlaExplora',AdminLocalCharlaExplora);
 
 AdminLocalCharlaVer.$inject = ['ServiceUsuario', 'FactoryData', '$location',
   '$scope', '$timeout'
@@ -2043,10 +2140,10 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
   vm.optFechaInicio = function() {
     return {
       icons: {
-        next: 'glyphicon glyphicon-arrow-right',
-        previous: 'glyphicon glyphicon-arrow-left',
-        up: 'glyphicon glyphicon-arrow-up',
-        down: 'glyphicon glyphicon-arrow-down',
+        next: 'fa fa-angle-right',
+        previous: 'fa fa-angle-left',
+        up: 'fa fa-angle-up',
+        down: 'fa fa-angle-down',
       },
       format: 'DD/MM/YYYY'
     };
@@ -2054,10 +2151,10 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
   vm.optFechaFin = function() {
     return {
       icons: {
-        next: 'glyphicon glyphicon-arrow-right',
-        previous: 'glyphicon glyphicon-arrow-left',
-        up: 'glyphicon glyphicon-arrow-up',
-        down: 'glyphicon glyphicon-arrow-down',
+        next: 'fa fa-angle-right',
+        previous: 'fa fa-angle-left',
+        up: 'fa fa-angle-up',
+        down: 'fa fa-angle-down',
       },
       format: 'DD/MM/YYYY',
       minDate: new Date(vm.data.charla.fechaInicio)
@@ -2066,6 +2163,38 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
 
 
   vm.cargarHTTP = function(){
+
+
+
+
+    vm.addDay = function(){
+      vm.horario.push({"inicio":"00:00","fin":"00:00","dia":""});
+    }
+
+    vm.optionDia = {
+                icons:{
+                  next:'fa fa-angle-right',
+                  previous:'fa fa-angle-left',
+                  up:'fa fa-angle-up',
+                  down:'fa fa-angle-down',
+                },
+                format: 'DD/MM/YYYY'
+              };
+    vm.optionHora = {
+                icons:{
+                  next:'fa fa-angle-right',
+                  previous:'fa fa-angle-left',
+                  up:'fa fa-angle-up',
+                  down:'fa fa-angle-down',
+                },
+                format: 'LT'
+              };
+
+
+    //horario version compleja
+    vm.horario= JSON.parse('[{"inicio":"11:00","fin":"13:00","dia":"23/12/2016"},{"inicio":"12:00","fin":"12:00","dia":"24/12/2016"}]');
+
+
 
     vm.charlaOriginal = {};
 
@@ -2086,6 +2215,17 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
     angular.copy(vm.data.charla,vm.charlaOriginal);
 
     $timeout(function () {
+
+      $scope.$watch('vm.horario', function(newValue, oldValue){
+        if (oldValue  != newValue) {
+          vm.desactiveButton = false;
+        }
+        if (oldValue != newValue) {
+          vm.saveAndNotify = true;
+        }else{
+
+        }
+      }, true);
       $scope.$watch('vm.data.charla', function(newValue, oldValue){
         if (oldValue  != newValue) {
           vm.desactiveButton = false;
@@ -2113,43 +2253,6 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
 
 angular.module('sistemaCharlas')
   .controller('AdminLocalCharlaVer',AdminLocalCharlaVer);
-
-AdminLocalCharlaExplora.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader'];
-function AdminLocalCharlaExplora(ServiceUsuario,$location,ServiceHTTP,FactoryLoader){
-  var vm = this;
-      vm.data = {};
-      vm.data.charlas = {};
-
-  vm.goto = goto;
-  function goto(url,id){
-    $location.path('admin-local/listado/charlas/ver/'+ id);
-  }
-
-  function initView(){
-
-    function resultOK(data){
-      FactoryLoader.desactivar();
-      vm.data.charlas = data.data;
-      console.log(vm.data.charlas,data);
-    }
-    function resultNOK(err){
-      FactoryLoader.desactivar();
-      console.log(err);
-    }
-    ServiceHTTP.getCharlasPorMonitorId(2,'Cargando listado de actividades...')
-      .success(function(data) {
-          resultOK(data);
-      })
-      .error(function(err) {
-          resultNOK(err);
-      });
-
-  }
-  initView();
-}
-
-angular.module('sistemaCharlas')
-  .controller('AdminLocalCharlaExplora',AdminLocalCharlaExplora);
 
 AdminLocalIndex.$inject = ['ServiceUsuario'];
 function AdminLocalIndex(ServiceUsuario){
@@ -2592,10 +2695,10 @@ function FormularioInscripcion($scope, ServiceUsuario, ServiceStore, ServiceHTTP
 
       return {
           icons:{
-            next:'glyphicon glyphicon-arrow-right',
-            previous:'glyphicon glyphicon-arrow-left',
-            up:'glyphicon glyphicon-arrow-up',
-            down:'glyphicon glyphicon-arrow-down'
+            next:'fa fa-angle-right',
+            previous:'fa fa-angle-left',
+            up:'fa fa-angle-up',
+            down:'fa fa-angle-down'
           },
           viewMode: 'years',
           format: 'DD/MM/YYYY'
@@ -2674,6 +2777,33 @@ function FormularioInscripcion($scope, ServiceUsuario, ServiceStore, ServiceHTTP
 angular.module('sistemaCharlas')
   .controller('FormularioInscripcion',FormularioInscripcion);
 
+Index.$inject = ['ServiceUsuario','$location','FactoryLoader'];
+function Index(ServiceUsuario,$location,FactoryLoader){
+  var vm = this;
+
+  vm.createUsuario = createUsuario;
+  function createUsuario(type){
+    vm.usuario = {
+      'role' : type,
+      'id' : 1,
+      'rut' : '16.751.256-9',
+      'nombre' : 'Claudio Rojas R.'
+    };
+    ServiceUsuario.setData(vm.usuario);
+  }
+
+
+  vm.login = login;
+  function login(type){
+    vm.createUsuario(type);
+    $location.path(type);
+    console.log(type);
+  }
+}
+
+angular.module('sistemaCharlas')
+  .controller('Index',Index);
+
 ListaCharla.$inject = ['$scope','ServiceHTTP','ServiceStore','$location','$routeParams','FactoryLoader'];
 function ListaCharla($scope,ServiceHTTP,ServiceStore,$location,$routeParams,FactoryLoader){
 
@@ -2741,33 +2871,6 @@ function Main(ServiceUsuario){
 
 angular.module('sistemaCharlas')
   .controller('Main',Main);
-
-Index.$inject = ['ServiceUsuario','$location','FactoryLoader'];
-function Index(ServiceUsuario,$location,FactoryLoader){
-  var vm = this;
-
-  vm.createUsuario = createUsuario;
-  function createUsuario(type){
-    vm.usuario = {
-      'role' : type,
-      'id' : 1,
-      'rut' : '16.751.256-9',
-      'nombre' : 'Claudio Rojas R.'
-    };
-    ServiceUsuario.setData(vm.usuario);
-  }
-
-
-  vm.login = login;
-  function login(type){
-    vm.createUsuario(type);
-    $location.path(type);
-    console.log(type);
-  }
-}
-
-angular.module('sistemaCharlas')
-  .controller('Index',Index);
 
 
 

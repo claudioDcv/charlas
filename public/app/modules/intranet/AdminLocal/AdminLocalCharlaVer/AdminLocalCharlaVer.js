@@ -47,10 +47,10 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
   vm.optFechaInicio = function() {
     return {
       icons: {
-        next: 'glyphicon glyphicon-arrow-right',
-        previous: 'glyphicon glyphicon-arrow-left',
-        up: 'glyphicon glyphicon-arrow-up',
-        down: 'glyphicon glyphicon-arrow-down',
+        next: 'fa fa-angle-right',
+        previous: 'fa fa-angle-left',
+        up: 'fa fa-angle-up',
+        down: 'fa fa-angle-down',
       },
       format: 'DD/MM/YYYY'
     };
@@ -58,10 +58,10 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
   vm.optFechaFin = function() {
     return {
       icons: {
-        next: 'glyphicon glyphicon-arrow-right',
-        previous: 'glyphicon glyphicon-arrow-left',
-        up: 'glyphicon glyphicon-arrow-up',
-        down: 'glyphicon glyphicon-arrow-down',
+        next: 'fa fa-angle-right',
+        previous: 'fa fa-angle-left',
+        up: 'fa fa-angle-up',
+        down: 'fa fa-angle-down',
       },
       format: 'DD/MM/YYYY',
       minDate: new Date(vm.data.charla.fechaInicio)
@@ -70,6 +70,38 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
 
 
   vm.cargarHTTP = function(){
+
+
+
+
+    vm.addDay = function(){
+      vm.horario.push({"inicio":"00:00","fin":"00:00","dia":""});
+    }
+
+    vm.optionDia = {
+                icons:{
+                  next:'fa fa-angle-right',
+                  previous:'fa fa-angle-left',
+                  up:'fa fa-angle-up',
+                  down:'fa fa-angle-down',
+                },
+                format: 'DD/MM/YYYY'
+              };
+    vm.optionHora = {
+                icons:{
+                  next:'fa fa-angle-right',
+                  previous:'fa fa-angle-left',
+                  up:'fa fa-angle-up',
+                  down:'fa fa-angle-down',
+                },
+                format: 'LT'
+              };
+
+
+    //horario version compleja
+    vm.horario= JSON.parse('[{"inicio":"11:00","fin":"13:00","dia":"23/12/2016"},{"inicio":"12:00","fin":"12:00","dia":"24/12/2016"}]');
+
+
 
     vm.charlaOriginal = {};
 
@@ -90,6 +122,17 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
     angular.copy(vm.data.charla,vm.charlaOriginal);
 
     $timeout(function () {
+
+      $scope.$watch('vm.horario', function(newValue, oldValue){
+        if (oldValue  != newValue) {
+          vm.desactiveButton = false;
+        }
+        if (oldValue != newValue) {
+          vm.saveAndNotify = true;
+        }else{
+
+        }
+      }, true);
       $scope.$watch('vm.data.charla', function(newValue, oldValue){
         if (oldValue  != newValue) {
           vm.desactiveButton = false;
