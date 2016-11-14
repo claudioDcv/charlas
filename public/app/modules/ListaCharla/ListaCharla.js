@@ -17,7 +17,7 @@ function ListaCharla($scope,ServiceHTTP,ServiceStore,$location,$routeParams,Fact
         FactoryLoader.desactivar();
         console.log(err);
       }
-      ServiceHTTP.getCharlas(vm.param.dr,'Cargando listado de charlas...')
+      ServiceHTTP.getCharlas(vm.param.dr,'Cargando listado de actividades...')
         .success(function(data) {
             resultOK(data);
         })

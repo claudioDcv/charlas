@@ -30,7 +30,7 @@ function MonitorCharla(ServiceUsuario, $location, ServiceHTTP, FactoryLoader,
       FactoryLoader.desactivar();
       console.log(err);
     }
-    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de charlas...')
+    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de actividades...')
       .success(function(data) {
         resultOK(data);
       })

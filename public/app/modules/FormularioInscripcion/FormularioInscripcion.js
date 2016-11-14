@@ -28,7 +28,6 @@ function FormularioInscripcion($scope, ServiceUsuario, ServiceStore, ServiceHTTP
             down:'glyphicon glyphicon-arrow-down'
           },
           viewMode: 'years',
-          maxDate : vm.maxDate,
           format: 'DD/MM/YYYY'
         };
 

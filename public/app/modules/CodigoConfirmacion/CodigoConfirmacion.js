@@ -15,7 +15,7 @@ function CodigoConfirmacion(ServiceStore, FactorySearchCharla, $routeParams, $lo
 
 
     if (vm.param.call == 'listado') {
-      vm.volver.texto = 'Volver a listado de charlas';
+      vm.volver.texto = 'Volver a listado de actividades';
       vm.urlAnteriorPortal = '/#/public/';
       vm.urlAnterior = "/#/public/charlas/listado/" + vm.param.dr;
       vm.textoUrlAnterior = "Charlas"

@@ -1518,7 +1518,7 @@ function AdminAct(ServiceUsuario, $location, ServiceHTTP, FactoryLoader) {
             FactoryLoader.desactivar();
             console.log(err);
         }
-        ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de charlas...')
+        ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de actividades...')
             .success(function(data) {
                 resultOK(data);
             })
@@ -1564,51 +1564,6 @@ function AdminActAcad(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, Ser
 
 angular.module('sistemaCharlas')
   .controller('AdminActAcad',AdminActAcad);
-
-AdminActExplorar.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader','ServiceHelpers'];
-function AdminActExplorar(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,ServiceHelpers){
-      var vm = this;
-      vm.data = {};
-      vm.data.actividades = {};
-
-      vm.goto = goto;
-
-      function goto(url, id) {
-          $location.path(url + '/' + id);
-      }
-
-      vm.minutosAHoras = function(minutos) {
-          return ServiceHelpers.minutosAHoras(minutos);
-      }
-
-      function initView() {
-
-          function resultOK(data) {
-              FactoryLoader.desactivar();
-              vm.data.actividades = data.data;
-              console.log(vm.data.actividades, data);
-          }
-
-          function resultNOK(err) {
-              FactoryLoader.desactivar();
-              console.log(err);
-          }
-          ServiceHTTP.getAllActividadesHistoricas(2, 'Cargando listado de actividades...')
-              .success(function(data) {
-                  resultOK(data);
-              })
-              .error(function(err) {
-                  resultNOK(err);
-              });
-
-      }
-      initView();
-
-
-  }
-
-angular.module('sistemaCharlas')
-  .controller('AdminActExplorar',AdminActExplorar);
 
 AdminActExplorarHistorial.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
 
@@ -1656,6 +1611,51 @@ function AdminActExplorarHistorial(ServiceUsuario, $location, ServiceHTTP, Facto
 
 angular.module('sistemaCharlas')
   .controller('AdminActExplorarHistorial',AdminActExplorarHistorial);
+
+AdminActExplorar.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader','ServiceHelpers'];
+function AdminActExplorar(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,ServiceHelpers){
+      var vm = this;
+      vm.data = {};
+      vm.data.actividades = {};
+
+      vm.goto = goto;
+
+      function goto(url, id) {
+          $location.path(url + '/' + id);
+      }
+
+      vm.minutosAHoras = function(minutos) {
+          return ServiceHelpers.minutosAHoras(minutos);
+      }
+
+      function initView() {
+
+          function resultOK(data) {
+              FactoryLoader.desactivar();
+              vm.data.actividades = data.data;
+              console.log(vm.data.actividades, data);
+          }
+
+          function resultNOK(err) {
+              FactoryLoader.desactivar();
+              console.log(err);
+          }
+          ServiceHTTP.getAllActividadesHistoricas(2, 'Cargando listado de actividades...')
+              .success(function(data) {
+                  resultOK(data);
+              })
+              .error(function(err) {
+                  resultNOK(err);
+              });
+
+      }
+      initView();
+
+
+  }
+
+angular.module('sistemaCharlas')
+  .controller('AdminActExplorar',AdminActExplorar);
 
 AdminActVer.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers','$routeParams','$scope'];
 
@@ -1994,43 +1994,6 @@ function AdminLocalCharlaCreate(ServiceUsuario,FactoryData){
 angular.module('sistemaCharlas')
   .controller('AdminLocalCharlaCreate',AdminLocalCharlaCreate);
 
-AdminLocalCharlaExplora.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader'];
-function AdminLocalCharlaExplora(ServiceUsuario,$location,ServiceHTTP,FactoryLoader){
-  var vm = this;
-      vm.data = {};
-      vm.data.charlas = {};
-
-  vm.goto = goto;
-  function goto(url,id){
-    $location.path('admin-local/listado/charlas/ver/'+ id);
-  }
-
-  function initView(){
-
-    function resultOK(data){
-      FactoryLoader.desactivar();
-      vm.data.charlas = data.data;
-      console.log(vm.data.charlas,data);
-    }
-    function resultNOK(err){
-      FactoryLoader.desactivar();
-      console.log(err);
-    }
-    ServiceHTTP.getCharlasPorMonitorId(2,'Cargando listado de charlas...')
-      .success(function(data) {
-          resultOK(data);
-      })
-      .error(function(err) {
-          resultNOK(err);
-      });
-
-  }
-  initView();
-}
-
-angular.module('sistemaCharlas')
-  .controller('AdminLocalCharlaExplora',AdminLocalCharlaExplora);
-
 AdminLocalCharlaVer.$inject = ['ServiceUsuario', 'FactoryData', '$location',
   '$scope', '$timeout'
 ];
@@ -2150,6 +2113,43 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
 
 angular.module('sistemaCharlas')
   .controller('AdminLocalCharlaVer',AdminLocalCharlaVer);
+
+AdminLocalCharlaExplora.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader'];
+function AdminLocalCharlaExplora(ServiceUsuario,$location,ServiceHTTP,FactoryLoader){
+  var vm = this;
+      vm.data = {};
+      vm.data.charlas = {};
+
+  vm.goto = goto;
+  function goto(url,id){
+    $location.path('admin-local/listado/charlas/ver/'+ id);
+  }
+
+  function initView(){
+
+    function resultOK(data){
+      FactoryLoader.desactivar();
+      vm.data.charlas = data.data;
+      console.log(vm.data.charlas,data);
+    }
+    function resultNOK(err){
+      FactoryLoader.desactivar();
+      console.log(err);
+    }
+    ServiceHTTP.getCharlasPorMonitorId(2,'Cargando listado de actividades...')
+      .success(function(data) {
+          resultOK(data);
+      })
+      .error(function(err) {
+          resultNOK(err);
+      });
+
+  }
+  initView();
+}
+
+angular.module('sistemaCharlas')
+  .controller('AdminLocalCharlaExplora',AdminLocalCharlaExplora);
 
 AdminLocalIndex.$inject = ['ServiceUsuario'];
 function AdminLocalIndex(ServiceUsuario){
@@ -2294,7 +2294,7 @@ function MonitorCharla(ServiceUsuario, $location, ServiceHTTP, FactoryLoader,
       FactoryLoader.desactivar();
       console.log(err);
     }
-    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de charlas...')
+    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de actividades...')
       .success(function(data) {
         resultOK(data);
       })
@@ -2341,7 +2341,7 @@ function MonitorCharlaHistorial(ServiceUsuario, $location, ServiceHTTP,
       FactoryLoader.desactivar();
       console.log(err);
     }
-    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de charlas...')
+    ServiceHTTP.getCharlasPorMonitorId(2, 'Cargando listado de actividades...')
       .success(function(data) {
         resultOK(data);
       })
@@ -2541,7 +2541,7 @@ function CodigoConfirmacion(ServiceStore, FactorySearchCharla, $routeParams, $lo
 
 
     if (vm.param.call == 'listado') {
-      vm.volver.texto = 'Volver a listado de charlas';
+      vm.volver.texto = 'Volver a listado de actividades';
       vm.urlAnteriorPortal = '/#/public/';
       vm.urlAnterior = "/#/public/charlas/listado/" + vm.param.dr;
       vm.textoUrlAnterior = "Charlas"
@@ -2598,7 +2598,6 @@ function FormularioInscripcion($scope, ServiceUsuario, ServiceStore, ServiceHTTP
             down:'glyphicon glyphicon-arrow-down'
           },
           viewMode: 'years',
-          maxDate : vm.maxDate,
           format: 'DD/MM/YYYY'
         };
 
@@ -2675,33 +2674,6 @@ function FormularioInscripcion($scope, ServiceUsuario, ServiceStore, ServiceHTTP
 angular.module('sistemaCharlas')
   .controller('FormularioInscripcion',FormularioInscripcion);
 
-Index.$inject = ['ServiceUsuario','$location','FactoryLoader'];
-function Index(ServiceUsuario,$location,FactoryLoader){
-  var vm = this;
-
-  vm.createUsuario = createUsuario;
-  function createUsuario(type){
-    vm.usuario = {
-      'role' : type,
-      'id' : 1,
-      'rut' : '16.751.256-9',
-      'nombre' : 'Claudio Rojas R.'
-    };
-    ServiceUsuario.setData(vm.usuario);
-  }
-
-
-  vm.login = login;
-  function login(type){
-    vm.createUsuario(type);
-    $location.path(type);
-    console.log(type);
-  }
-}
-
-angular.module('sistemaCharlas')
-  .controller('Index',Index);
-
 ListaCharla.$inject = ['$scope','ServiceHTTP','ServiceStore','$location','$routeParams','FactoryLoader'];
 function ListaCharla($scope,ServiceHTTP,ServiceStore,$location,$routeParams,FactoryLoader){
 
@@ -2721,7 +2693,7 @@ function ListaCharla($scope,ServiceHTTP,ServiceStore,$location,$routeParams,Fact
         FactoryLoader.desactivar();
         console.log(err);
       }
-      ServiceHTTP.getCharlas(vm.param.dr,'Cargando listado de charlas...')
+      ServiceHTTP.getCharlas(vm.param.dr,'Cargando listado de actividades...')
         .success(function(data) {
             resultOK(data);
         })
@@ -2769,6 +2741,33 @@ function Main(ServiceUsuario){
 
 angular.module('sistemaCharlas')
   .controller('Main',Main);
+
+Index.$inject = ['ServiceUsuario','$location','FactoryLoader'];
+function Index(ServiceUsuario,$location,FactoryLoader){
+  var vm = this;
+
+  vm.createUsuario = createUsuario;
+  function createUsuario(type){
+    vm.usuario = {
+      'role' : type,
+      'id' : 1,
+      'rut' : '16.751.256-9',
+      'nombre' : 'Claudio Rojas R.'
+    };
+    ServiceUsuario.setData(vm.usuario);
+  }
+
+
+  vm.login = login;
+  function login(type){
+    vm.createUsuario(type);
+    $location.path(type);
+    console.log(type);
+  }
+}
+
+angular.module('sistemaCharlas')
+  .controller('Index',Index);
 
 
 
