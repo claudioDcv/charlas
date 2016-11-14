@@ -123,7 +123,7 @@ function AdminLocalCharlaVer(ServiceUsuario, FactoryData, $location, $scope,
 
     $timeout(function () {
 
-      $scope.$watch('vm.horario', function(newValue, oldValue){
+      $scope.$watch('vm.horarios', function(newValue, oldValue){
         if (oldValue  != newValue) {
           vm.desactiveButton = false;
         }
