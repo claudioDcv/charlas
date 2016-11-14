@@ -156,7 +156,7 @@
             <input type="file" class="btn btn-default" required ng-if="vm.estadoCarga">
             <a href="http://www.google.cl"  ng-if="!vm.estadoCarga" class="btn btn-default"><i class="fa fa-download"></i> Descargar documento</a>
             <button type="button" name="button"  ng-if="!vm.estadoCarga" class="btn btn-default" ng-click="vm.estadoCarga = true">Cargar nuevo Documento</button>
-            <button type="button" name="button"  ng-if="vm.estadoCarga" class="btn btn-default" ng-click="vm.estadoCarga = false">Cancelar Acción</button>
+            <button type="button" name="button"  ng-if="vm.estadoCarga" class="btn btn-default" ng-click="vm.estadoCarga = false">Revertir</button>
           </div>
         </div>
 
