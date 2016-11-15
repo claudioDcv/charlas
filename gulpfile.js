@@ -2,6 +2,7 @@ var gulp = require("gulp");
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var cssmin = require('gulp-cssmin');
+const jshint = require('gulp-jshint');
 
 gulp.task('scripts', function() {
   return gulp.src([
@@ -13,8 +14,20 @@ gulp.task('scripts', function() {
       "./public/app/modules/**/*.js",
       "./public/app/modules/intranet/**/**/*.js"
     ])
+
     .pipe(concat('main.js'))
+
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+
     .pipe(gulp.dest('./public/js/dist/'));
+});
+
+
+gulp.task('scriptsHint', function() {
+  return gulp.src('./public/js/dist/main.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
 
 

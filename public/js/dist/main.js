@@ -15,16 +15,7 @@ angular.module('sistemaCharlas')
         "MODULE_PATH_MONITOR" : "/app/modules/intranet/Monitor/",
         "MODULE_PATH_ADMIN_LOCAL" : "/app/modules/intranet/AdminLocal/",
         "NAMESPACES" : {
-          "TEST":"com.sitema.charlas.ex.messagge.test",
-          "":"",
-          "":"",
-          "":"",
-          "":"",
-          "":"",
-          "":"",
-          "":"",
-          "":""
-        }
+          "TEST":"com.sitema.charlas.ex.messagge.test"}
     });
 
 angular.module('sistemaCharlas')
@@ -495,7 +486,7 @@ angular
   ]);
 
 (function() {
-    'use strict'
+    'use strict';
 
     angular
         .module('sistemaCharlas')
@@ -1491,6 +1482,36 @@ angular.module('sistemaCharlas')
     }
   }
 
+AdminActAcad.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
+
+function AdminActAcad(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, ServiceHelpers) {
+
+    var vm = this;
+    vm.data = {};
+    vm.data.actividad = {};
+
+
+    vm.data.actividad.tipo = "0";
+    vm.data.actividad.modalidad = "0";
+
+    vm.goto = goto;
+
+    function goto(url, id) {
+        $location.path('admin/charlas/' + url + '/' + id);
+    }
+
+
+    function initView() {
+      vm.activa = true;
+    }
+    initView();
+
+
+}
+
+angular.module('sistemaCharlas')
+  .controller('AdminActAcad',AdminActAcad);
+
 AdminAct.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader'];
 
 function AdminAct(ServiceUsuario, $location, ServiceHTTP, FactoryLoader) {
@@ -1534,36 +1555,6 @@ function AdminAct(ServiceUsuario, $location, ServiceHTTP, FactoryLoader) {
 
 angular.module('sistemaCharlas')
   .controller('AdminAct',AdminAct);
-
-AdminActAcad.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
-
-function AdminActAcad(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, ServiceHelpers) {
-
-    var vm = this;
-    vm.data = {};
-    vm.data.actividad = {};
-
-
-    vm.data.actividad.tipo = "0";
-    vm.data.actividad.modalidad = "0";
-
-    vm.goto = goto;
-
-    function goto(url, id) {
-        $location.path('admin/charlas/' + url + '/' + id);
-    }
-
-
-    function initView() {
-      vm.activa = true;
-    }
-    initView();
-
-
-}
-
-angular.module('sistemaCharlas')
-  .controller('AdminActAcad',AdminActAcad);
 
 AdminActExplorar.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader','ServiceHelpers'];
 function AdminActExplorar(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,ServiceHelpers){
