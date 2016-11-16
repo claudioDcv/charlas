@@ -1482,36 +1482,6 @@ angular.module('sistemaCharlas')
     }
   }
 
-AdminActAcad.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
-
-function AdminActAcad(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, ServiceHelpers) {
-
-    var vm = this;
-    vm.data = {};
-    vm.data.actividad = {};
-
-
-    vm.data.actividad.tipo = "0";
-    vm.data.actividad.modalidad = "0";
-
-    vm.goto = goto;
-
-    function goto(url, id) {
-        $location.path('admin/charlas/' + url + '/' + id);
-    }
-
-
-    function initView() {
-      vm.activa = true;
-    }
-    initView();
-
-
-}
-
-angular.module('sistemaCharlas')
-  .controller('AdminActAcad',AdminActAcad);
-
 AdminAct.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader'];
 
 function AdminAct(ServiceUsuario, $location, ServiceHTTP, FactoryLoader) {
@@ -1555,6 +1525,36 @@ function AdminAct(ServiceUsuario, $location, ServiceHTTP, FactoryLoader) {
 
 angular.module('sistemaCharlas')
   .controller('AdminAct',AdminAct);
+
+AdminActAcad.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP', 'FactoryLoader', 'ServiceHelpers'];
+
+function AdminActAcad(ServiceUsuario, $location, ServiceHTTP, FactoryLoader, ServiceHelpers) {
+
+    var vm = this;
+    vm.data = {};
+    vm.data.actividad = {};
+
+
+    vm.data.actividad.tipo = "0";
+    vm.data.actividad.modalidad = "0";
+
+    vm.goto = goto;
+
+    function goto(url, id) {
+        $location.path('admin/charlas/' + url + '/' + id);
+    }
+
+
+    function initView() {
+      vm.activa = true;
+    }
+    initView();
+
+
+}
+
+angular.module('sistemaCharlas')
+  .controller('AdminActAcad',AdminActAcad);
 
 AdminActExplorar.$inject = ['ServiceUsuario','$location','ServiceHTTP','FactoryLoader','ServiceHelpers'];
 function AdminActExplorar(ServiceUsuario,$location,ServiceHTTP,FactoryLoader,ServiceHelpers){
@@ -2279,83 +2279,6 @@ function CodigoConfirmacionMonitor(ServiceStore, FactorySearchCharla,
 
 }
 
-angular.module("sistemaCharlas")
-  .controller("CodigoConfirmacionMonitor",CodigoConfirmacionMonitor);
-
-FormularioInscripcionMonitor.$inject = ['$scope','ServiceUsuario','ServiceStore','ServiceHTTP','$routeParams','$filter','$location','FactoryLoader'];
-function FormularioInscripcionMonitor($scope,ServiceUsuario,ServiceStore,ServiceHTTP,$routeParams,$filter,$location,FactoryLoader){
-
-  var vm = this;
-  vm.data = {};
-
-  vm.param = {};
-  vm.param.id = $routeParams.id;
-  vm.param.dr = $routeParams.dr;
-  vm.param.call = $routeParams.call;
-  vm.data.charla = {};
-  vm.data.charla.fechaFormat;
-  vm.data.charla.horaFormat;
-  vm.data.charla.horaFinFormat
-
-    vm.urlAnteriorPortal = '/#/monitor/';
-    vm.urlAnterior = "/#/monitor/charlas/evaluacion/" + vm.param.dr;
-    vm.textoUrlAnterior = "Formulario de Charla"
-
-
-  vm.newCharla = {
-    nombre : '',
-    apellido : '',
-    email : '',
-    fechaNacimiento : '',
-    comuna : ''
-  };
-
-  vm.callCharla = callCharla;
-  function callCharla(dr,id){
-      ServiceHTTP.getCharlaPorId(dr,id,'Cargando...').then(function(data){
-        FactoryLoader.desactivar();
-        vm.data.charla = data.data.data;
-      },function(err){
-        console.log(err);
-      });
-     //vm.data.charla = ServiceHTTP.getCharlaPorId(id);
-     vm.data.charla.fechaFormat = $filter('date')(vm.data.charla.fecha, "fullDate");
-     vm.data.charla.horaFormat = $filter('date')(vm.data.charla.fecha, "shortTime");
-     vm.data.charla.horaFinFormat = $filter('date')(vm.data.charla.fechaFin, "shortTime");
-  }
-
-  vm.gotoRegistrar = gotoRegistrar;
-  function gotoRegistrar(){
-    if ($scope.FormNuevaCharla.$valid) {
-
-      //Copiar la data de la charla en el envio
-      vm.newCharla.data = vm.data.charla;
-
-      ServiceHTTP.aceptarInscripcionCharla(vm.newCharla , "Registrando...").then(function(data){
-        FactoryLoader.desactivar();
-        console.log(data);
-        ServiceStore.setUltimaCharlaInscrita(data.data.data);
-        $location.path('monitor/detalle-inscripcion/' + vm.param.call + '/' + vm.param.dr + '/' + vm.param.id);
-      });
-
-    }else{
-      console.log('Error debe completar todos los campos');
-    }
-
-
-  }
-  vm.cancelarInscripcion = cancelarInscripcion;
-  function cancelarInscripcion(id){
-    ServiceStore.deleteUltimaCharlaInscrita(id);
-    $location.path('public/charlas/listado/' + vm.param.dr);
-  }
-
-  vm.callCharla(vm.param.dr,vm.param.id);
-}
-
-angular.module('sistemaCharlas')
-  .controller('FormularioInscripcionMonitor',FormularioInscripcionMonitor);
-
 MonitorCharla.$inject = ['ServiceUsuario', '$location', 'ServiceHTTP',
   'FactoryLoader', '$routeParams'
 ];
@@ -2582,14 +2505,6 @@ function MonitorIndex(ServiceUsuario){
 angular.module('sistemaCharlas')
   .controller('MonitorIndex',MonitorIndex);
 
-CharlaPorCodigo.$inject = ['ServiceUsuario','FactorySearchCharla','$location'];
-function CharlaPorCodigo(ServiceUsuario,FactorySearchCharla,$location){
-  var vm = this;
-}
-
-angular.module('sistemaCharlas')
-  .controller('CharlaPorCodigo',CharlaPorCodigo);
-
 CharlaView.$inject = ['ServiceUsuario','FactorySearchCharla','$location'];
 function CharlaView(ServiceUsuario,FactorySearchCharla,$location){
 
@@ -2608,6 +2523,14 @@ function CharlaView(ServiceUsuario,FactorySearchCharla,$location){
 
 angular.module('sistemaCharlas')
   .controller('CharlaView',CharlaView);
+
+CharlaPorCodigo.$inject = ['ServiceUsuario','FactorySearchCharla','$location'];
+function CharlaPorCodigo(ServiceUsuario,FactorySearchCharla,$location){
+  var vm = this;
+}
+
+angular.module('sistemaCharlas')
+  .controller('CharlaPorCodigo',CharlaPorCodigo);
 
 CharlasIndex.$inject = ['ServiceUsuario'];
 function CharlasIndex(ServiceUsuario){
