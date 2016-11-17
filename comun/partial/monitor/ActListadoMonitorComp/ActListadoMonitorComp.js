@@ -1,10 +1,9 @@
 // ActListadoMonitorComp.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActListadoMonitorComp.$inject = [];
-  function ActListadoMonitorComp(){
-    var vm = this;
+ActListadoMonitorComp.$inject = [];
 
-  }
-})();
+function ActListadoMonitorComp() {
+  var vm = this;
+
+}

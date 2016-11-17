@@ -1,10 +1,9 @@
 // ActProgSuspVer.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActProgSuspVer.$inject = [];
-  function ActProgSuspVer(){
-    var vm = this;
+ActProgSuspVer.$inject = [];
 
-  }
-})();
+function ActProgSuspVer() {
+  var vm = this;
+
+}

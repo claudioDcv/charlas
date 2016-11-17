@@ -3,5 +3,5 @@
   'use strict';
 
   angular.module('comun')
-    .controller('ActProgNueva',ActProgNueva);
+    .controller('ActProgNueva', ActProgNueva);
 })();

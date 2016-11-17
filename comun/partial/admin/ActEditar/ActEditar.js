@@ -1,10 +1,9 @@
 // ActEditar.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActEditar.$inject = [];
-  function ActEditar(){
-    var vm = this;
+ActEditar.$inject = [];
 
-  }
-})();
+function ActEditar() {
+  var vm = this;
+
+}

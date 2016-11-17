@@ -1,10 +1,8 @@
-// ActProgActi.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActProgActi.$inject = [];
-  function ActProgActi(){
-    var vm = this;
+ActProgActi.$inject = [];
 
-  }
-})();
+function ActProgActi() {
+  var vm = this;
+
+}

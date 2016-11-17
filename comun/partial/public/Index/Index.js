@@ -1,10 +1,9 @@
 // Index.js
-(function() {
-  'use strict';
+'use strict';
 
-  Index.$inject = [];
-  function Index(){
-    var vm = this;
+Index.$inject = [];
 
-  }
-})();
+function Index() {
+  var vm = this;
+
+}

@@ -1,10 +1,9 @@
 // ActividadVer.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActividadVer.$inject = [];
-  function ActividadVer(){
-    var vm = this;
+ActividadVer.$inject = [];
 
-  }
-})();
+function ActividadVer() {
+  var vm = this;
+
+}

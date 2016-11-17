@@ -1,10 +1,9 @@
 // ActividadListado.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActividadListado.$inject = [];
-  function ActividadListado(){
-    var vm = this;
+ActividadListado.$inject = [];
 
-  }
-})();
+function ActividadListado() {
+  var vm = this;
+
+}

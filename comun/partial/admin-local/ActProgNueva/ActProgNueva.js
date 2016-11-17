@@ -1,10 +1,9 @@
 // ActProgNueva.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActProgNueva.$inject = [];
-  function ActProgNueva(){
-    var vm = this;
+ActProgNueva.$inject = [];
 
-  }
-})();
+function ActProgNueva() {
+  var vm = this;
+
+}

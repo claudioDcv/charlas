@@ -1,10 +1,9 @@
 // ActividadConsultar.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActividadConsultar.$inject = [];
-  function ActividadConsultar(){
-    var vm = this;
+ActividadConsultar.$inject = [];
 
-  }
-})();
+function ActividadConsultar() {
+  var vm = this;
+
+}

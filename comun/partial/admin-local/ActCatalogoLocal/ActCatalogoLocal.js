@@ -1,10 +1,9 @@
 // ActCatalogoLocal.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActCatalogoLocal.$inject = [];
-  function ActCatalogoLocal(){
-    var vm = this;
+ActCatalogoLocal.$inject = [];
 
-  }
-})();
+function ActCatalogoLocal() {
+  var vm = this;
+
+}

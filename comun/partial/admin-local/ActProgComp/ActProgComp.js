@@ -1,10 +1,9 @@
 // ActProgComp.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActProgComp.$inject = [];
-  function ActProgComp(){
-    var vm = this;
+ActProgComp.$inject = [];
 
-  }
-})();
+function ActProgComp() {
+  var vm = this;
+
+}

@@ -1,10 +1,9 @@
 // ActividadPorDRVer.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActividadPorDRVer.$inject = [];
-  function ActividadPorDRVer(){
-    var vm = this;
+ActividadPorDRVer.$inject = [];
 
-  }
-})();
+function ActividadPorDRVer() {
+  var vm = this;
+
+}

@@ -9,15 +9,14 @@ make_folder(){
 content_js(){
   cat <<EOF >$1
 // $2.js
-(function() {
-  'use strict';
+'use strict';
 
-  $2.\$inject = [];
-  function $2(){
-    var vm = this;
+$2.\$inject = [];
 
-  }
-})();
+function $2(){
+  var vm = this;
+
+}
 EOF
 }
 content_js_module(){

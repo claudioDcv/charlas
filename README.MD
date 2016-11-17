@@ -186,7 +186,7 @@ angular.module('sistemaCharlas')
     })
     /*** Admin Local ***/
     /* Catálogo de Actividades */
-    .when('/admin-local/actividad/ver/:id_actividad', {
+    .when('/admin-local/actividad/listado', {
       templateUrl: 'comun/partial/adminLocal/ActCatalogoLocal/ActCatalogoLocal.html',
       controller: 'ActCatalogoLocal',
       controllerAs: 'vm'

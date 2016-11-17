@@ -1,10 +1,9 @@
 // ActVerLocal.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActVerLocal.$inject = [];
-  function ActVerLocal(){
-    var vm = this;
+ActVerLocal.$inject = [];
 
-  }
-})();
+function ActVerLocal() {
+  var vm = this;
+
+}

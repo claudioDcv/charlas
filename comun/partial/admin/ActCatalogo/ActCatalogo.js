@@ -1,10 +1,9 @@
 // ActCatalogo.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActCatalogo.$inject = [];
-  function ActCatalogo(){
-    var vm = this;
+ActCatalogo.$inject = [];
 
-  }
-})();
+function ActCatalogo() {
+  var vm = this;
+
+}

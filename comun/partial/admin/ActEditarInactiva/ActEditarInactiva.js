@@ -1,10 +1,9 @@
 // ActEditarInactiva.js
-(function() {
-  'use strict';
+'use strict';
 
-  ActEditarInactiva.$inject = [];
-  function ActEditarInactiva(){
-    var vm = this;
+ActEditarInactiva.$inject = [];
 
-  }
-})();
+function ActEditarInactiva() {
+  var vm = this;
+
+}
