@@ -11,12 +11,11 @@ content_js(){
 // $2.js
 'use strict';
 
-$2.\$inject = [];
-
 function $2(){
   var vm = this;
 
 }
+$2.\$inject = [];
 EOF
 }
 content_js_module(){
