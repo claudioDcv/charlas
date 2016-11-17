@@ -277,3 +277,33 @@ angular.module('sistemaCharlas')
 
 });
 ```
+##Crear modules
+- ejecutar ```makemodule.sh```  
+- elegir opción 2
+- agregar nombre ```nombre_modulo ruta nombre_app```
+
+### Nombre de modules
+```
+AdminIndex ./comun/partial/admin comun
+ActNueva ./comun/partial/admin comun
+ActCatalogo ./comun/partial/admin comun
+ActEditar ./comun/partial/admin comun
+ActCatalogoInvactiva ./comun/partial/admin comun
+ActEditarInactiva ./comun/partial/admin comun
+
+ActCatalogoLocal ./comun/partial/admin-local comun
+ActVerLocal ./comun/partial/admin-local comun
+ActProgNueva ./comun/partial/admin-local comun
+ActProgActi ./comun/partial/admin-local comun
+ActProgSusp ./comun/partial/admin-local comun
+ActProgComp ./comun/partial/admin-local comun
+ActProgActiVer ./comun/partial/admin-local comun
+ActProgSuspVer ./comun/partial/admin-local comun
+ActProgCompVer ./comun/partial/admin-local comun
+
+ActListadoMonitor ./comun/partial/monitor comun
+ActVerMonitor ./comun/partial/monitor comun
+ActListadoMonitorComp ./comun/partial/monitor comun
+ActVerMonitorComp ./comun/partial/monitor comun
+
+```
