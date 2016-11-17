@@ -38,36 +38,42 @@ solo ingresa a esta vista si previamente se consulto en ***Actividad por DR***
 >**host/namespace**/#/admin/actividad/activa/listado
 
 #### Ver/Editar Actividad
->**host/namespace**/#/admin/actividad/activa/listado/editar/**:id_Actividad**
+>**host/namespace**/#/admin/actividad/activa/listado/editar/**:id_actividad**
 
 #### Catálogo de Actividades Incativas
 >**host/namespace**/#/admin/actividad/inactiva/listado
 
 #### Ver/Editar Incativa
->**host/namespace**/#/admin/actividad/inactiva/listado/editar/**:id_Actividad**
+>**host/namespace**/#/admin/actividad/inactiva/listado/editar/**:id_actividad**
 
 ### Admin Local
+
+#### Catálogo Actividades
+>**host/namespace**/#/admin-local/actividad/listado
+#### Catálogo Actividades Ver
+>**host/namespace**/#/admin-local/actividad/ver/**:id_actividad**
+
 #### Programar Actividad
->**host/namespace**/#/admin/actividad-programada/nueva
+>**host/namespace**/#/admin-local/actividad-programada/nueva
 
 #### Actividades Programadas Activas
->**host/namespace**/#/admin/actividad-programada/activa/listado
+>**host/namespace**/#/admin-local/actividad-programada/activa/listado
 
 #### Actividades Programadas Suspendidas
->**host/namespace**/#/admin/actividad-programada/asuspendida/listado
+>**host/namespace**/#/admin-local/actividad-programada/asuspendida/listado
 
 #### Actividades Programadas Completadas
->**host/namespace**/#/admin/actividad-programada/completada/listado
+>**host/namespace**/#/admin-local/actividad-programada/completada/listado
 
 
 #### Actividades Programadas Activas Ver
->**host/namespace**/#/admin/actividad-programada/activa/ver/**:id_actividad_programada**
+>**host/namespace**/#/admin-local/actividad-programada/activa/ver/**:id_actividad_programada**
 
 #### Actividades Programadas Suspendidas Ver
->**host/namespace**/#/admin/actividad-programada/asuspendida/ver/**:id_actividad_programada**
+>**host/namespace**/#/admin-local/actividad-programada/asuspendida/ver/**:id_actividad_programada**
 
 #### Actividades Programadas Completadas Ver
->**host/namespace**/#/admin/actividad-programada/completada/ver/**:id_actividad_programada**
+>**host/namespace**/#/admin-local/actividad-programada/completada/ver/**:id_actividad_programada**
 
 
 ### Funcionario Monitor
@@ -85,5 +91,3 @@ solo ingresa a esta vista si previamente se consulto en ***Actividad por DR***
 #### Listado de Actividades Programadas Asignadas Completadas Ver
 
 >**host/namespace**/#/monitor/actividad/completada/ver/**:user_type**/**:id_actividad**
-
-####  asd
