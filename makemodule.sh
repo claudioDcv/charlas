@@ -3,7 +3,7 @@
 make_folder(){
   #$1 nombre del directorio
   mkdir "./$1"
-  echo "directorio: ./$1 creado"
+  echo "creado  directorio:   $1"
 }
 
 content_js(){
@@ -13,7 +13,7 @@ content_js(){
 
 function $2(){
   var vm = this;
-
+      vm.data = {};
 }
 $2.\$inject = [];
 EOF
@@ -24,12 +24,8 @@ content_js_module(){
   #$3 scope
   cat <<EOF >$1
 // $2.module.js
-(function() {
-  'use strict';
-
-  angular.module('$3')
-    .controller('$2',$2);
-})();
+'use strict';
+angular.module('$3').controller('$2',$2);
 EOF
 }
 
@@ -59,42 +55,52 @@ make_module(){
   content_js "$2/$1/$1.js" $1
   content_js_module "$2/$1/$1.module.js" $1 $3
   make_html "$2/$1/$1.html" $1 $3
-  echo "Modulo: ./$2/$1 creado"
+  echo "creado  Modulo:   $2/$1"
 }
 
 
-
-
-
-
-control=0
+control=2
 name="no-name"
 ruta="./"
 scope="sistemaCharlas"
-while [ $control -ne 3 ]; do
-        echo "Seleccione Opción"
-        echo "1 Crear directorio"
-        echo "2 Crear Modulo"
-        echo "3 salir"
-        read control
+nombreApp=""
 
-        case $control in
-          1 )
-          echo "Ingrese nombre de directorio: "
-          read name
-          make_folder $name
-            ;;
-          2 )
-          echo "modulo ruta app: "
-          read name ruta scope
+echo "Nombre App"
+read nombreApp
 
+#while [ $control -ne 3 ]; do
+        ##echo "Seleccione Opción"
+        ##echo "1 Crear directorio"
+        ##echo "2 Crear Modulo"
+        ##echo "3 salir"
+        ##read control
 
+        #case $control in
+          #1 )
+          #echo "Ingrese nombre de directorio: "
+          #read name
+          #make_folder $name
+          #  ;;
+          ## CREACION DE CARPETAS
+          archivo="./modules_seed/a"
+          #Read file by line
+          while IFS='' read -r line || [[ -n "$line" ]]; do
+              make_folder $line
+          done < "$archivo"
 
-          make_module $name $ruta $scope
-            ;;
-          3 )
+          #2 )
+          #echo "Nombre Archivo"
+          #read archivo
+          archivo="./modules_seed/b"
+          #Read file by line
+          while IFS='' read -r line || [[ -n "$line" ]]; do
+              make_module $line $nombreApp
+          done < "$archivo"
+          #make_module $name $ruta $nombreApp
+          #  ;;
+          #3 )
           echo "Saliendo..."
-            ;;
-        esac
+          #  ;;
+        #esac
 
-done
+#done

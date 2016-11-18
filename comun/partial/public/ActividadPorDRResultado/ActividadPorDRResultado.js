@@ -1,9 +1,8 @@
 // ActividadPorDRResultado.js
 'use strict';
 
-ActividadPorDRResultado.$inject = [];
-
-function ActividadPorDRResultado() {
+function ActividadPorDRResultado(){
   var vm = this;
-
+      vm.data = {};
 }
+ActividadPorDRResultado.$inject = [];

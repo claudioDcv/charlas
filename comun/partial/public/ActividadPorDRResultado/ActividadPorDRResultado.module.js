@@ -1,7 +1,3 @@
 // ActividadPorDRResultado.module.js
-(function() {
-  'use strict';
-
-  angular.module('comun')
-    .controller('ActividadPorDRResultado',ActividadPorDRResultado);
-})();
+'use strict';
+angular.module('comun').controller('ActividadPorDRResultado',ActividadPorDRResultado);

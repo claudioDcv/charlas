@@ -1,0 +1,6 @@
+./comun
+./comun/partial
+./comun/partial/admin
+./comun/partial/admin-local
+./comun/partial/monitor
+./comun/partial/public

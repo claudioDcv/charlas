@@ -1,7 +1,3 @@
 // ActProgCompVer.module.js
-(function() {
-  'use strict';
-
-  angular.module('comun')
-    .controller('ActProgCompVer',ActProgCompVer);
-})();
+'use strict';
+angular.module('comun').controller('ActProgCompVer',ActProgCompVer);

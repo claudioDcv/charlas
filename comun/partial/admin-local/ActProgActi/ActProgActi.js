@@ -1,8 +1,8 @@
+// ActProgActi.js
 'use strict';
 
-ActProgActi.$inject = [];
-
-function ActProgActi() {
+function ActProgActi(){
   var vm = this;
-
+      vm.data = {};
 }
+ActProgActi.$inject = [];

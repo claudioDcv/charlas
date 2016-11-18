@@ -1,9 +1,8 @@
 // ActVerMonitor.js
 'use strict';
 
-ActVerMonitor.$inject = [];
-
-function ActVerMonitor() {
+function ActVerMonitor(){
   var vm = this;
-
+      vm.data = {};
 }
+ActVerMonitor.$inject = [];

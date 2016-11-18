@@ -1,9 +1,8 @@
 // ActNueva.js
 'use strict';
 
-ActNueva.$inject = [];
-
-function ActNueva() {
+function ActNueva(){
   var vm = this;
-
+      vm.data = {};
 }
+ActNueva.$inject = [];

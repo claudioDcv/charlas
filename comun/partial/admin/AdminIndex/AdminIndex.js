@@ -1,9 +1,8 @@
 // AdminIndex.js
 'use strict';
 
-AdminIndex.$inject = [];
-
-function AdminIndex() {
+function AdminIndex(){
   var vm = this;
-
+      vm.data = {};
 }
+AdminIndex.$inject = [];

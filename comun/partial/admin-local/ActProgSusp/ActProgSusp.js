@@ -1,9 +1,8 @@
 // ActProgSusp.js
 'use strict';
 
-ActProgSusp.$inject = [];
-
-function ActProgSusp() {
+function ActProgSusp(){
   var vm = this;
-
+      vm.data = {};
 }
+ActProgSusp.$inject = [];

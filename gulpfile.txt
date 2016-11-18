@@ -1,0 +1,58 @@
+var gulp = require("gulp");
+var concat = require('gulp-concat');
+var sass = require('gulp-sass');
+var cssmin = require('gulp-cssmin');
+const jshint = require('gulp-jshint');
+var replace = require('gulp-replace');
+
+gulp.task('scripts', function() {
+  return gulp.src([
+      "./comun/partial/**/*.js",
+      //"./comun/app/directives/*.js",
+      //"./comun/app/directives/**/*.js",
+      //"./comun/app/factory/*.js",
+      //"./comun/app/service/*.js",
+      //"./comun/app/modules/**/*.js",
+      //"./comun/app/modules/intranet/**/**/*.js"
+    ])
+
+    .pipe(concat('main.js'))
+    .pipe(replace("'use strict';", ''))
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+
+    .pipe(gulp.dest('./sistemacharlas_modules/dist/'));
+});
+
+
+gulp.task('scriptsHint', function() {
+  return gulp.src('./public/js/dist/main.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+
+
+gulp.task('watch', function() {
+  gulp.watch( "./comun/partial/**/*.js", ['scripts']);
+  //gulp.watch('./public/app/core/*.js', ['scripts']);
+  //gulp.watch('./public/app/directives/*.js', ['scripts']);
+  //gulp.watch('./public/app/directives/**/*.js', ['scripts']);
+  //gulp.watch('./public/app/services/*.js', ['scripts']);
+  //gulp.watch('./public/app/modules/intranet/**/**/*.js', ['scripts']);
+  //gulp.watch('./public/app/factory/*.js', ['scripts']);
+
+  //gulp.watch('./public/app/sass/*.sass', ['sass']);
+});
+
+
+
+gulp.task('sass', function() {
+  return gulp.src('./public/app/sass/styleUHL.sass')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cssmin())
+    .pipe(gulp.dest('./public/css'));
+});
+
+
+gulp.task('default', ['scripts', 'watch']);

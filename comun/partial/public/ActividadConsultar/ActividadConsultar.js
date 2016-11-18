@@ -1,9 +1,8 @@
 // ActividadConsultar.js
 'use strict';
 
-ActividadConsultar.$inject = [];
-
-function ActividadConsultar() {
+function ActividadConsultar(){
   var vm = this;
-
+      vm.data = {};
 }
+ActividadConsultar.$inject = [];

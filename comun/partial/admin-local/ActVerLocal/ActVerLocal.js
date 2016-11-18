@@ -1,9 +1,8 @@
 // ActVerLocal.js
 'use strict';
 
-ActVerLocal.$inject = [];
-
-function ActVerLocal() {
+function ActVerLocal(){
   var vm = this;
-
+      vm.data = {};
 }
+ActVerLocal.$inject = [];

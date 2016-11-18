@@ -1,9 +1,8 @@
 // ActCatalogoInvactiva.js
 'use strict';
 
-ActCatalogoInvactiva.$inject = [];
-
-function ActCatalogoInvactiva() {
+function ActCatalogoInvactiva(){
   var vm = this;
-
+      vm.data = {};
 }
+ActCatalogoInvactiva.$inject = [];

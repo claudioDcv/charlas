@@ -1,9 +1,8 @@
 // ActEditar.js
 'use strict';
 
-ActEditar.$inject = [];
-
-function ActEditar() {
+function ActEditar(){
   var vm = this;
-
+      vm.data = {};
 }
+ActEditar.$inject = [];

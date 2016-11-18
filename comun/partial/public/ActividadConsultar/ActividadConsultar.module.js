@@ -1,7 +1,3 @@
 // ActividadConsultar.module.js
-(function() {
-  'use strict';
-
-  angular.module('comun')
-    .controller('ActividadConsultar', ActividadConsultar);
-})();
+'use strict';
+angular.module('comun').controller('ActividadConsultar',ActividadConsultar);

@@ -1,9 +1,8 @@
 // ActividadListadoDR.js
 'use strict';
 
-ActividadListadoDR.$inject = [];
-
-function ActividadListadoDR() {
+function ActividadListadoDR(){
   var vm = this;
-
+      vm.data = {};
 }
+ActividadListadoDR.$inject = [];

@@ -1,9 +1,8 @@
 // ActListadoMonitor.js
 'use strict';
 
-ActListadoMonitor.$inject = [];
-
-function ActListadoMonitor() {
+function ActListadoMonitor(){
   var vm = this;
-
+      vm.data = {};
 }
+ActListadoMonitor.$inject = [];

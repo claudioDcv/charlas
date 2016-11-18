@@ -1,9 +1,8 @@
 // ActividadVer.js
 'use strict';
 
-ActividadVer.$inject = [];
-
-function ActividadVer() {
+function ActividadVer(){
   var vm = this;
-
+      vm.data = {};
 }
+ActividadVer.$inject = [];
