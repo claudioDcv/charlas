@@ -1,0 +1,17 @@
+var arr = []
+for (i = 0; i < a.length; i++) {
+    var t = a[i];
+    arr.push({
+      descripcion : t.descripcion.toLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase() }),
+      codigo : t.codigo,
+      regnCodigo : t.regnCodigo,
+      uoclCodigo : t.uoclCodigo
+    })
+    //console.log(t.descripcion + " " + t.codigo + " " + t.regnCodigo + " " + t.uoclCodigo)
+}
+
+var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(arr));
+var dlAnchorElem = document.createElement('a')
+dlAnchorElem.setAttribute("href",dataStr);
+dlAnchorElem.setAttribute("download", "arr.json");
+dlAnchorElem.click();

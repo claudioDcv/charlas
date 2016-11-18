@@ -11,6 +11,7 @@ ActCatalogo ./comun/partial/admin
 ActEditar ./comun/partial/admin
 ActCatalogoInvactiva ./comun/partial/admin
 ActEditarInactiva ./comun/partial/admin
+AdminLocal ./comun/partial/admin-local
 ActCatalogoLocal ./comun/partial/admin-local
 ActVerLocal ./comun/partial/admin-local
 ActProgNueva ./comun/partial/admin-local
