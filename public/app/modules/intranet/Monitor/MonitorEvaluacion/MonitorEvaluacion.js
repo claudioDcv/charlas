@@ -104,8 +104,18 @@ function MonitorEvaluacion($scope, ServiceUsuario, ServiceHTTP, FactoryLoader,
   vm.disableButton = true;
 
 
-}
+  vm.todosPresentes = function(){
+    console.log(1);
+    for (var v in vm.arr) {
+      if (vm.arr.hasOwnProperty(v)) {
+        console.log(vm.arr[v]);
+        vm.arr[v].asistio = true;
+      }
+    }
+  }
 
+
+}
 
 
 function arrayObjectIndexOf(arr, obj) {

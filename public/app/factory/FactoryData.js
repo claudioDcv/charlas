@@ -12,7 +12,7 @@ function FactoryData() {
     getDr : getDr
   }
   function getDr(){
-    return ['Todas las Regionales','DR Arica','DR Iquique','DR Antofagasta','DR Copiapó','DR La Serena','DR Valparaíso','DR Rancagua','DR Talca','DR Concepción','DR Temuco','DR Valdivia','DR Puerto Montt','DR Coyhaique','DR Punta Arenas'];
+    return ['Dirección Nacional','DR Arica','DR Iquique','DR Antofagasta','DR Copiapó','DR La Serena','DR Valparaíso','DR Rancagua','DR Talca','DR Concepción','DR Temuco','DR Valdivia','DR Puerto Montt','DR Coyhaique','DR Punta Arenas'];
   }
   function getComuna(){
 

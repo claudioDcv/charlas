@@ -20,7 +20,7 @@ display: none;
         <div class="btn-group" role="group" aria-label="...">
           <button class="btn btn-primary" ng-click="vm.login('admin')">Ingresar como Administrador Central</button>
           <button class="btn btn-primary" ng-click="vm.login('admin-local')">Ingresar como Administrador Local</button>
-          <button class="btn btn-primary" ng-click="vm.login('monitor')">Ingresar como Funcionario</button>
+          <button class="btn btn-primary" ng-click="vm.login('monitor')">Ingresar como Monitor</button>
           <button class="btn btn-primary" ng-click="vm.login('usuario')">Ingresar como participante</button>
         </div>
 
@@ -36,17 +36,23 @@ display: none;
         <div ng-if="!vm.listaDR" class="sistema-charlas-bloque bloque-gris bloque-spacer sistema-charlas-table-vertical">
             <h3 class="bloque-title ng-binding"></h3>
             <div class="row">
-              <div class="col-md-6" ng-click="vm.listaDR = true">
+              <a class="col-md-4" ng-click="vm.listaDR = true" href="">
                 <div class="bloque-image">
                   <i aria-hidden="true" class="fa fa-bolt fa-4x fa-azul img-bloque hidden-xs"></i>
-                  <h4>Inscribirme en una Actividad</h4>
+                  <h4>Ver Actividades Disponibles e Inscribirme</h4>
                   <br><br>
                 </div>
-              </div>
-              <a href="/#/public/charlas/buscar" class="col-md-6">
+              </a>
+              <a href="/#/public/charlas/buscar" class="col-md-4">
                 <div class="bloque-image">
                   <i aria-hidden="true" class="fa fa-star  fa-4x fa-azul img-bloque hidden-xs"></i>
-                  <h4>Cancelar inscripción u Obtener Certificado</h4>
+                  <h4>Obtener Certificado de Participación</h4>
+                </div>
+              </a>
+              <a href="/#/public/charlas/buscar" class="col-md-4">
+                <div class="bloque-image">
+                  <i aria-hidden="true" class="fa fa-trash-o  fa-4x fa-azul img-bloque hidden-xs"></i>
+                  <h4>Cancelar Inscripción</h4>
                 </div>
               </a>
             </div>

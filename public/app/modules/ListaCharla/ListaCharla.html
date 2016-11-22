@@ -25,7 +25,7 @@
               <th class="text-center" style="vertical-align:middle">Fecha Realización</th>
               <th class="text-center" style="vertical-align:middle">Horario</th>
               <th class="text-center" style="vertical-align:middle" ng-if="vm.param.type != 'historicas'">Cupos</th>
-              <th class="text-center" style="vertical-align:middle" ng-if="vm.param.type != 'historicas'">Inscripción</th>
+              <th class="text-center" style="vertical-align:middle" ng-if="vm.param.type != 'historicas'" colspan="2">Inscripción</th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +36,9 @@
               <td>{{item.fecha | date:'fullDate'}}</td>
               <td>{{item.fecha | date:'shortTime'}}</td>
               <td ng-if="vm.param.type != 'historicas'">{{item.cupos}}</td>
+              <td>
+                <button class="btn btn-primary"  data-toggle="modal" data-target="#myModal">Ver Ficha</button>
+              </td>
               <td>
                 <button class="btn btn-primary" ng-click="vm.charlaInscribir(item)" ng-if="item.estado == 0">Inscribirme</button>
               </td>
@@ -53,3 +56,78 @@
     </div>
 </div>
 <!-- FIN CUERPO -->
+
+<!-- Modal -->
+<style media="screen">
+    .modal-backdrop.in {
+        display: none;
+    }
+    modal-add-charla .modal.fade.in {
+        background: hsla(0,0%,0%,.5);
+    }
+
+</style>
+<modal-add-charla>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Actividad: Nuevos Contribuyentes</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-responsive">
+          <tr>
+            <td>ID</td>
+            <td>4259</td>
+          </tr>
+          <tr>
+            <td>Tema</td>
+            <td>Nuevos Contribuyentes</td>
+          </tr>
+          <tr>
+            <td>Dirección Regional</td>
+            <td>DR Metropolitana Norte</td>
+          </tr>
+          <tr>
+            <td>Dirección</td>
+            <td>Dirección Regional Iquique, Tarapacá 470</td>
+          </tr>
+          <tr>
+            <td>Fecha Inicio</td>
+            <td>martes, 22 de noviembre de 2016</td>
+          </tr>
+          <tr>
+            <td>Destinatario</td>
+            <td>Lorem ipsum dolor sit amet</td>
+          </tr>
+          <tr>
+            <td>Tipo</td>
+            <td>Lorem ipsum dolor sit amet</td>
+          </tr>
+          <tr>
+            <td>Modalidad</td>
+            <td>Lorem ipsum dolor sit amet</td>
+          </tr>
+          <tr>
+            <td>Objetivo</td>
+            <td>Lorem ipsum dolor sit amet</td>
+          </tr>
+          <tr>
+            <td>Temario</td>
+            <td>Lorem ipsum dolor sit amet</td>
+          </tr>
+          <tr>
+            <td>Metodología</td>
+            <td>Lorem ipsum dolor sit amet</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Incribirme</button>
+      </div>
+    </div>
+  </div>
+</div>
+</modal-add-charla>
